@@ -13,10 +13,11 @@
     "resolveJsonModule": true,
     "sourceMap": true
   },
-  "include": ["*"],
+  "include": ["**/*"],
   "exclude": ["./dist"],
 
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "files": true // make sure ts-node loads definitions from the above config `includes`
   }
 }

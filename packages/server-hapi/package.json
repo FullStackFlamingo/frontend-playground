@@ -17,6 +17,7 @@
     "@hapi/hapi": "20.x",
     "@hapi/inert": "7.x",
     "@hapi/h2o2": "9.x",
+    "blipp": "4.x",
     "joi": "17.x",
     "vite": "3.x",
     "nunjucks": "3.x"
