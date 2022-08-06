@@ -1,16 +1,25 @@
 import { ServerRoute } from '@hapi/hapi';
 
-type renderParams = { html: string; scripts?: string };
-export type renderFunction = (url: string, ...args: any) => Promise<renderParams>;
+type RenderParams = { appHtml: string; scripts?: string };
+export type RenderFunction = (url: string, ...args: any) => Promise<RenderParams>;
 
+export type ClientManifestEntry = {
+  file: string;
+  src: string;
+  isEntry?: boolean;
+  css?: string[];
+  assets?: string[];
+};
 export interface SSRAdapterOptions {
   moduleName: string;
-  modulePath: string;
   serverEntryPath: string;
+  isProd: boolean;
+  assetsPath?: string;
+  clientManifestPath?: string;
 }
 
 export interface ISSRAdapter {
-  moduleName: string;
-  render: renderFunction;
+  render: RenderFunction;
   getAssetRoute(): ServerRoute;
+  getClientManifestEntry(): ClientManifestEntry | undefined;
 }

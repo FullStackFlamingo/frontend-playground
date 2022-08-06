@@ -1,26 +1,19 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { Request, ResponseToolkit } from '@hapi/hapi';
 import Nunjucks from 'nunjucks';
-import {
-  assetRoute as reactUIAssetRoute,
-  render as reactUIRender,
-  manifestEntry as manifestEntryReactUI,
-} from './adapters/react-ui-adapter.js';
 import { isProd } from './config.js';
+import { SSRAdapter } from './adapters/SSRAdapter.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-Nunjucks.configure(path.resolve(__dirname, 'templates'), {
-  autoescape: true,
-  noCache: !isProd,
-});
+const serverEntryPath = isProd ? 'dist/server/entry-server.js' : 'src/entry-server.tsx';
+const SSRAdapterReactUI = new SSRAdapter({ isProd, moduleName: '@private/react-ui', serverEntryPath });
 
 const homepage = {
   method: 'GET',
   path: '/',
   async handler(request: Request, h: ResponseToolkit) {
     const url = request.url.pathname + request.url.search;
-    const { html: reactUIHTML, scripts: reactUIScripts } = await reactUIRender(url);
+    // const { html: reactUIHTML, scripts: reactUIScripts } = await reactUIRender(url);
+    const { appHtml: reactUIHTML, scripts: reactUIScripts } = await SSRAdapterReactUI.render(url);
+    const manifestEntryReactUI = SSRAdapterReactUI.getClientManifestEntry();
     try {
       const htmlOut = await Nunjucks.render('homepage.njk', {
         isProd,
@@ -35,4 +28,5 @@ const homepage = {
     }
   },
 };
-export const routes = [homepage, reactUIAssetRoute];
+const assetRoute = SSRAdapterReactUI.getAssetRoute();
+export const routes = [homepage, assetRoute];

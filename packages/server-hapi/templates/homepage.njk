@@ -9,16 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% if isProd %}
       {% for filename in manifestEntryReactUI.css %}
-      <link rel="stylesheet" href="/frontend/react-ui/{{filename}}"></script>
+      <link rel="stylesheet" href="/frontend/@private/react-ui/{{filename}}"></script>
       {% endfor %}
-    <script type="module" async src="/frontend/react-ui/{{manifestEntryReactUI.file}}"></script>
+      <script type="module" async src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
     {% else %}
-    {{ reactUIScripts | safe }}
-    <script type="module" async src="/frontend/react-ui/src/entry-client.tsx"></script>
+      <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
     {% endif %}
   </head>
   <body>
     <header>Header</header>
+    {{ reactUIScripts | safe }}
+
     <div id="react-ui">{{ reactUIHTML | safe }}</div>
     <footer>Footer</footer>
   </body>

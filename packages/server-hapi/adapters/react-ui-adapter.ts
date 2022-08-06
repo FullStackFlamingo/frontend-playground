@@ -59,7 +59,7 @@ export const render = internals.render;
 
 const assetRouteBase = {
   method: 'GET',
-  path: '/frontend/react-ui/{p*}',
+  path: '/frontend/@private/react-ui/{p*}',
 };
 const assetRouteHandler: ServerRoute['handler'] = {
   directory: {
