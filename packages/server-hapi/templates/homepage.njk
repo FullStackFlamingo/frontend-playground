@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+       document.querySelector('html').classList.add('js');
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if isProd %}
+      {% for filename in reactUIManifestEntry.css %}
+      <link rel="stylesheet" href="/frontend/react-ui/{{filename}}"></script>
+      {% endfor %}
+    <script type="module" async src="/frontend/react-ui/{{reactUIManifestEntry.file}}"></script>
+    {% else %}
+    {{ reactUIScripts | safe }}
+    <script type="module" async src="/frontend/react-ui/src/entry-client.tsx"></script>
+    {% endif %}
+  </head>
+  <body>
+    <header>Header</header>
+    <div id="react-ui">{{ reactUIHTML | safe }}</div>
+    <footer>Footer</footer>
+  </body>
+</html>

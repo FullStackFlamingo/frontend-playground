@@ -1,0 +1,26 @@
+{
+  "name": "@private/react-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "vite build --config vite.config.ssr.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "vite": "3.x",
+    "vitest": "0.x",
+    "@vitejs/plugin-react": "2.x",
+    "@types/react": "18.x",
+    "@types/react-dom": "18.x",
+    "typescript": "4.x"
+  }
+}
