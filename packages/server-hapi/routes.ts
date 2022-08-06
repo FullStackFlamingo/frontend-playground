@@ -3,10 +3,10 @@ import { fileURLToPath } from 'url';
 import { Request, ResponseToolkit } from '@hapi/hapi';
 import Nunjucks from 'nunjucks';
 import {
-  routes as reactUIRoutes,
+  assetRoute as reactUIAssetRoute,
   render as reactUIRender,
-  manifestEntry as reactUIManifestEntry,
-} from './react-ui-adapter.js';
+  manifestEntry as manifestEntryReactUI,
+} from './adapters/react-ui-adapter.js';
 import { isProd } from './config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,7 +26,7 @@ const homepage = {
         isProd,
         reactUIHTML,
         reactUIScripts,
-        reactUIManifestEntry,
+        manifestEntryReactUI,
       });
       return h.response(htmlOut);
     } catch (err) {
@@ -35,4 +35,4 @@ const homepage = {
     }
   },
 };
-export const routes = [homepage, ...reactUIRoutes];
+export const routes = [homepage, reactUIAssetRoute];

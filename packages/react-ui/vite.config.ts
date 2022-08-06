@@ -9,7 +9,7 @@ export default defineConfig({
       clientPort: 3200,
     },
   },
-  base: 'http://localhost:3200/frontend/react-ui/',
+  base: '/frontend/react-ui/',
   plugins: [react()],
   build: {
     manifest: true,
