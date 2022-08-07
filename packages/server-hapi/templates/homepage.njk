@@ -15,14 +15,15 @@
     {% else %}
       <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
     {% endif %}
+
+    {{ headHtmlReactUI | safe }}
+    {{ headHtmlVueUI | safe }}
   </head>
   <body>
     <header>Header</header>
     
-    {{ scriptsReactUI | safe }}
     <div id="react-ui">{{ htmlReactUI | safe }}</div>
 
-    {{ scriptsVueUI | safe }}
     <div id="vue-ui">{{ htmlVueUI | safe }}</div>
 
     <footer>Footer</footer>

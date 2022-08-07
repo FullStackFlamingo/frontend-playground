@@ -22,8 +22,8 @@ const homepage = {
   async handler(request: Request, h: ResponseToolkit) {
     const url = request.url.pathname + request.url.search;
     // const { html: reactUIHTML, scripts: reactUIScripts } = await reactUIRender(url);
-    const { appHtml: htmlReactUI, scripts: scriptsReactUI } = await SSRAdapterReactUI.render(url);
-    const { appHtml: htmlVueUI, scripts: scriptsVueUI } = await SSRAdapterVueUI.render(url);
+    const { appHtml: htmlReactUI, appHeadHtml: headHtmlReactUI } = await SSRAdapterReactUI.render(url);
+    const { appHtml: htmlVueUI, appHeadHtml: headHtmlVueUI } = await SSRAdapterVueUI.render(url);
 
     const manifestEntryReactUI = SSRAdapterReactUI.getClientManifestEntry();
     const manifestEntryVueUI = SSRAdapterVueUI.getClientManifestEntry();
@@ -32,10 +32,10 @@ const homepage = {
       const htmlOut = await Nunjucks.render('homepage.njk', {
         isProd,
         htmlReactUI,
-        scriptsReactUI,
+        headHtmlReactUI,
         manifestEntryReactUI,
         htmlVueUI,
-        scriptsVueUI,
+        headHtmlVueUI,
         manifestEntryVueUI,
       });
       return h.response(htmlOut);

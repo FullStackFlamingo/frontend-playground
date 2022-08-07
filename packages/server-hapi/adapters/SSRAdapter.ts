@@ -8,10 +8,10 @@ import { ISSRAdapter, ClientManifestEntry, RenderFunction, SSRAdapterOptions } f
 export class SSRAdapter implements ISSRAdapter {
   private moduleName: string;
   private modulePath: string;
-  private clientManifest?: object;
+  private clientManifest?: object = {};
   public render!: RenderFunction;
   private assetsPath: string;
-  private isProd: boolean;
+  private isProd: boolean = true;
 
   constructor(options: SSRAdapterOptions) {
     this.isProd = options.isProd;
@@ -33,8 +33,8 @@ export class SSRAdapter implements ISSRAdapter {
 
     const res = await import(path.resolve(this.modulePath, serverEntryPath));
     this.render = async (url: string, ...args: any) => {
-      const appHtml: string = await res.render(url, ...args);
-      return { appHtml };
+      const [appHtml, appHeadHtml = ''] = await res.render(url, this.clientManifest, ...args);
+      return { appHtml, appHeadHtml };
     };
   }
 
@@ -47,10 +47,10 @@ export class SSRAdapter implements ISSRAdapter {
     const importRender = async () => {
       const res = await viteServer.ssrLoadModule(path.join(this.moduleName, serverEntryPath));
       return async (url: string, ...args: any) => {
-        const scripts: string = await viteServer.transformIndexHtml(url, '');
+        const devScripts: string = await viteServer.transformIndexHtml(url, '');
 
-        const appHtml: string = await res.render(url, ...args);
-        return { appHtml, scripts };
+        const [appHtml, appHead = ''] = await res.render(url, this.clientManifest, ...args);
+        return { appHtml, appHeadHtml: devScripts + appHead };
       };
     };
     this.render = await importRender();
