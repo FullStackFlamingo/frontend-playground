@@ -3,6 +3,12 @@ import { ServerRoute } from '@hapi/hapi';
 type RenderParams = { appHtml: string; scripts?: string };
 export type RenderFunction = (url: string, ...args: any) => Promise<RenderParams>;
 
+export type AssetRouteConfig = {
+  prefix?: string;
+  host: string;
+  port: string;
+};
+
 export type ClientManifestEntry = {
   file: string;
   src: string;
@@ -20,6 +26,6 @@ export interface SSRAdapterOptions {
 
 export interface ISSRAdapter {
   render: RenderFunction;
-  getAssetRoute(): ServerRoute;
+  getAssetRoute(config?: AssetRouteConfig): ServerRoute;
   getClientManifestEntry(): ClientManifestEntry | undefined;
 }

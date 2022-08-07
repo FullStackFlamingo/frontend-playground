@@ -39,23 +39,22 @@ export class SSRAdapter implements ISSRAdapter {
   }
 
   private async initDev(serverEntryPath: string) {
-    const reactUIVite = await vite.createServer({
+    const viteServer = await vite.createServer({
       root: this.modulePath,
       appType: 'custom',
-      server: { middlewareMode: true },
+      server: { middlewareMode: true, hmr: false },
     });
-
     const importRender = async () => {
-      const res = await reactUIVite.ssrLoadModule(path.join(this.moduleName, serverEntryPath));
+      const res = await viteServer.ssrLoadModule(path.join(this.moduleName, serverEntryPath));
       return async (url: string, ...args: any) => {
-        const scripts: string = await reactUIVite.transformIndexHtml(url, '');
+        const scripts: string = await viteServer.transformIndexHtml(url, '');
 
         const appHtml: string = await res.render(url, ...args);
         return { appHtml, scripts };
       };
     };
     this.render = await importRender();
-    reactUIVite.watcher.on('change', async () => {
+    viteServer.watcher.on('change', async () => {
       try {
         this.render = await importRender();
       } catch (err) {
@@ -69,8 +68,12 @@ export class SSRAdapter implements ISSRAdapter {
     return manifestEntries.find((item) => item.isEntry === true);
   }
 
-  getAssetRoute(prefix: string = '/frontend/', host: string = 'localhost', port: string = '3200'): ServerRoute {
-    const assetRouteBase = { method: 'GET', path: `${prefix}${this.moduleName}/{p*}` };
+  getAssetRoute({ prefix = '/frontend/', host = 'localhost', port = '3200' } = {}): ServerRoute {
+    const assetRouteBase = {
+      method: 'GET',
+      path: `${prefix}${this.moduleName}/{p*}`,
+      options: { description: this.isProd ? 'client assets ' : `proxy route ${host}:${port}` },
+    };
     const assetRouteHandler: ServerRoute['handler'] = {
       directory: {
         path: path.resolve(this.modulePath, this.assetsPath),
@@ -78,8 +81,8 @@ export class SSRAdapter implements ISSRAdapter {
     };
     const assetRouteHandlerDev: ServerRoute['handler'] = {
       proxy: {
-        host: 'localhost',
-        port: '3200',
+        host,
+        port,
         protocol: undefined,
         passThrough: true,
       },

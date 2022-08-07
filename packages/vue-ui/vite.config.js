@@ -1,21 +1,22 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import vuePlugin from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 3200,
+    port: 3210,
     strictPort: true,
     hmr: {
-      clientPort: 3200,
+      clientPort: 3210,
+      // port: 3211,
     },
   },
-  base: '/frontend/@private/react-ui/',
-  plugins: [react()],
+  base: '/frontend/@private/vue-ui/',
+  plugins: [vuePlugin()],
   build: {
     manifest: true,
     rollupOptions: {
-      input: './src/entry-client.tsx',
+      input: './src/entry-client.js',
     },
   },
 });

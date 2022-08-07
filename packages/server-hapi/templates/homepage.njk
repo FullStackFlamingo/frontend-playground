@@ -18,9 +18,13 @@
   </head>
   <body>
     <header>Header</header>
-    {{ reactUIScripts | safe }}
+    
+    {{ scriptsReactUI | safe }}
+    <div id="react-ui">{{ htmlReactUI | safe }}</div>
 
-    <div id="react-ui">{{ reactUIHTML | safe }}</div>
+    {{ scriptsVueUI | safe }}
+    <div id="vue-ui">{{ htmlVueUI | safe }}</div>
+
     <footer>Footer</footer>
   </body>
 </html>

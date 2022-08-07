@@ -1,0 +1,22 @@
+{
+  "name": "@private/vue-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "vite build --config vite.config.ssr.js"
+  },
+  "dependencies": {
+    "vue": "3.2.x",
+    "vue-router": "4.x",
+    "pinia": "2.x"
+  },
+  "devDependencies": {
+    "vite": "3.x",
+    "vitest": "0.x",
+    "@vitejs/plugin-vue": "3.x"
+  }
+}
