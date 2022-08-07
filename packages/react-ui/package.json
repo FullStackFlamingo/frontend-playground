@@ -13,7 +13,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "@reduxjs/toolkit": "1.8.x",
+    "react-redux": "8.x",
+    "@hapi/bourne": "3.x"
   },
   "devDependencies": {
     "vite": "3.x",
