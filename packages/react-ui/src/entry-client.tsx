@@ -6,12 +6,12 @@ import { Provider } from 'react-redux';
 import { createStore } from './store';
 import App from './App';
 
-const serverState = Bourne.parse(window.__REACTUI_STATE__ ?? {});
-const store = createStore(serverState);
+const preloadedState = Bourne.parse(window.__REACTUI_STATE__ ?? {});
+const store = createStore(preloadedState);
 
 const RootApp = () => (
   <React.StrictMode>
-    <Provider store={store} serverState={serverState}>
+    <Provider store={store} serverState={preloadedState}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
