@@ -15,6 +15,7 @@ export default defineConfig({
   plugins: [vuePlugin()],
   build: {
     manifest: true,
+    ssrManifest: true,
     rollupOptions: {
       input: './src/entry-client.js',
     },

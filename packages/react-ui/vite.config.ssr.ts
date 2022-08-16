@@ -6,7 +6,6 @@ export default defineConfig({
   ...baseConfig,
   build: {
     ssr: true,
-    ssrManifest: true,
     rollupOptions: {
       input: './src/entry-server.tsx',
     },

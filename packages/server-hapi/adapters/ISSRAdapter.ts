@@ -22,6 +22,7 @@ export interface SSRAdapterOptions {
   isProd: boolean;
   assetsPath?: string;
   clientManifestPath?: string;
+  ssrManifestPath?: string;
 }
 
 export interface ISSRAdapter {

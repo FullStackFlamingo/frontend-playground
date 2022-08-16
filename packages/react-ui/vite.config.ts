@@ -14,6 +14,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     manifest: true,
+    ssrManifest: true,
     rollupOptions: {
       input: './src/entry-client.tsx',
     },

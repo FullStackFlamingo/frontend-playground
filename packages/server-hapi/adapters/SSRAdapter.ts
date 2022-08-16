@@ -9,6 +9,7 @@ export class SSRAdapter implements ISSRAdapter {
   private moduleName: string;
   private modulePath: string;
   private clientManifest?: object = {};
+  private ssrManifest?: object = {};
   public render!: RenderFunction;
   private assetsPath: string;
   private isProd: boolean = true;
@@ -20,20 +21,22 @@ export class SSRAdapter implements ISSRAdapter {
     this.assetsPath = options.assetsPath ?? 'dist';
     const serverEntryPath = options.serverEntryPath ?? 'dist/server/entry-server.js';
     const clientManifestPath = options.clientManifestPath ?? 'dist/manifest.json';
+    const ssrManifestPath = options.ssrManifestPath ?? 'dist/ssr-manifest.json';
 
     if (this.isProd) {
-      this.initProd(serverEntryPath, clientManifestPath);
+      this.initProd(serverEntryPath, ssrManifestPath, clientManifestPath);
     } else {
       this.initDev(serverEntryPath);
     }
   }
 
-  private async initProd(serverEntryPath: string, clientManifestPath: string) {
+  private async initProd(serverEntryPath: string, ssrManifestPath: string, clientManifestPath: string) {
     this.clientManifest = require(path.resolve(this.modulePath, clientManifestPath));
+    this.ssrManifest = require(path.resolve(this.modulePath, ssrManifestPath));
 
     const res = await import(path.resolve(this.modulePath, serverEntryPath));
     this.render = async (url: string, ...args: any) => {
-      const [appHtml, appHeadHtml = ''] = await res.render(url, this.clientManifest, ...args);
+      const [appHtml, appHeadHtml = ''] = await res.render(url, this.ssrManifest, ...args);
       return { appHtml, appHeadHtml };
     };
   }
@@ -49,7 +52,7 @@ export class SSRAdapter implements ISSRAdapter {
       return async (url: string, ...args: any) => {
         const devScripts: string = await viteServer.transformIndexHtml(url, '');
 
-        const [appHtml, appHead = ''] = await res.render(url, this.clientManifest, ...args);
+        const [appHtml, appHead = ''] = await res.render(url, this.ssrManifest, ...args);
         return { appHtml, appHeadHtml: devScripts + appHead };
       };
     };
