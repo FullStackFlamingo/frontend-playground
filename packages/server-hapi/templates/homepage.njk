@@ -16,6 +16,15 @@
       <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
     {% endif %}
 
+    {% if isProd %}
+      {% for filename in manifestEntryVueUI.css %}
+      <link rel="stylesheet" href="/frontend/@private/vue-ui/{{filename}}"></script>
+      {% endfor %}
+      <script type="module" async src="/frontend/@private/vue-ui/{{manifestEntryVueUI.file}}"></script>
+    {% else %}
+      <script type="module" async src="/frontend/@private/vue-ui/src/entry-client.js"></script>
+    {% endif %}
+
     {{ headHtmlReactUI | safe }}
     {{ headHtmlVueUI | safe }}
   </head>

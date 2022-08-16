@@ -12,7 +12,8 @@
   "dependencies": {
     "vue": "3.2.x",
     "vue-router": "4.x",
-    "pinia": "2.x"
+    "pinia": "2.x",
+    "@hapi/bourne": "3.x"
   },
   "devDependencies": {
     "vite": "3.x",

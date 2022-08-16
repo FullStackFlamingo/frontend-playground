@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run --prefix packages/server-hapi debug\" \"npm run --prefix packages/react-ui dev\" \"npm run --prefix packages/vue-ui dev\"",
-    "build": "concurrently \"npm run --prefix packages/server-hapi build\" \"npm run --prefix packages/react-ui build\" \"npm run --prefix packages/vue-ui build\"",
-    "start": "npm run --prefix packages/server-hapi start"
+    "dev": "concurrently \"npm run debug --prefix packages/server-hapi\" \"npm run dev --prefix packages/react-ui\" \"npm run dev --prefix packages/vue-ui\"",
+    "build": "npm run build -ws --if-present",
+    "start": "npm run start --prefix packages/server-hapi "
   },
   "author": "",
   "license": "ISC",

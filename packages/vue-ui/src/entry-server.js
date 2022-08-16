@@ -3,7 +3,7 @@ import { renderToString } from 'vue/server-renderer';
 import { createApp } from './main';
 
 export async function render(url, manifest) {
-  const { app, router } = createApp();
+  const { app, router, pinia } = createApp();
 
   // set the router to the desired URL before rendering
   router.push(url);
@@ -20,8 +20,13 @@ export async function render(url, manifest) {
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
-  const headHtml = preloadLinks;
+  const stateScript = createStateScript(pinia);
+  const headHtml = stateScript + preloadLinks;
   return [html, headHtml];
+}
+
+function createStateScript(pinia) {
+  return `<script>var __VUEUI_STATE__ = ${JSON.stringify(JSON.stringify(pinia.state.value ?? {}))};</script>`;
 }
 
 function renderPreloadLinks(modules, manifest) {
