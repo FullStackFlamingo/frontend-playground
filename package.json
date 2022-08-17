@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run debug --prefix packages/server-hapi\" \"npm run dev --prefix packages/react-ui\" \"npm run dev --prefix packages/vue-ui\"",
@@ -10,7 +12,6 @@
     "start": "npm run start --prefix packages/server-hapi "
   },
   "author": "",
-  "license": "ISC",
   "workspaces": [
     "packages/*"
   ],

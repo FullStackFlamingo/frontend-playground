@@ -12,7 +12,8 @@
     "start": "NODE_ENV=production node dist/server.js"
   },
   "author": "",
-  "license": "ISC",
+  "private": true,
+  "license": "MIT",
   "dependencies": {
     "@hapi/hapi": "20.x",
     "@hapi/inert": "7.x",
