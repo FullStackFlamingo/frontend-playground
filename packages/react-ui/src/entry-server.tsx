@@ -6,9 +6,9 @@ import { EnhancedStore } from '@reduxjs/toolkit';
 import { createStore } from './store';
 import App from './App';
 
-const store = createStore();
-
 export function render(url: string) {
+  const store = createStore();
+
   const appHtml = ReactDOMServer.renderToString(
     <React.StrictMode>
       <Provider store={store}>
