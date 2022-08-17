@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import * as toolkitRaw from '@reduxjs/toolkit'; // https://github.com/reduxjs/redux-toolkit/issues/1960
+const { createSlice } = ((toolkitRaw as any).default ?? toolkitRaw) as typeof toolkitRaw;
 
-export const counterSlice = createSlice({
+export const sliceCounter = createSlice({
   name: 'counter',
   initialState: {
     value: 0,
@@ -19,4 +20,4 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount } = sliceCounter.actions;
