@@ -6,6 +6,8 @@ import * as H2o2 from '@hapi/h2o2';
 import * as Blipp from 'blipp';
 import Nunjucks from 'nunjucks';
 
+import graphqlApiPlugin from './plugins/graphql-api/index.js';
+
 import { routes } from './routes.js';
 import { isProd } from './config.js';
 const init = async () => {
@@ -14,6 +16,7 @@ const init = async () => {
     host: 'localhost',
   });
 
+  await server.register({ plugin: graphqlApiPlugin, options: {} });
   await server.register(Inert);
   await server.register(H2o2);
   await server.register(Blipp);

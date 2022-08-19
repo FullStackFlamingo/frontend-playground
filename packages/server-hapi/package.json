@@ -20,13 +20,18 @@
     "blipp": "4.x",
     "joi": "17.x",
     "vite": "3.x",
-    "nunjucks": "3.x"
+    "nunjucks": "3.x",
+    "apollo-server-hapi": "3.x",
+    "graphql": "16.x",
+    "@graphql-tools/merge": "8.x",
+    "lodash": "4.x"
   },
   "devDependencies": {
     "@types/hapi__hapi": "20.x",
     "@types/hapi__inert": "5.x",
     "@types/hapi__h2o2": "8.x",
     "@types/nunjucks": "3.x",
+    "@types/lodash": "4.x",
     "typescript": "4.x",
     "ts-node": "10.x",
     "nodemon": "2.x"
