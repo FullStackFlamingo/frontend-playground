@@ -6,14 +6,15 @@ import merge from 'lodash/merge.js';
 import { typeDefs as navigationTypes, resolvers as navigationResolvers } from './types/types.navigation.js';
 import { typeDefs as bundlesTypes, resolvers as bundlesResolvers } from './types/types.bundles.js';
 import { typeDefs as translationsTypes, resolvers as translationsResolvers } from './types/types.translations.js';
+import { typeDefs as identityTypes, resolvers as identityResolvers } from './types/types.identity.js';
 
 const plugin: Hapi.Plugin<any> = {
   name: 'graphql-api',
   once: true,
   async register(server, options) {
     const apolloServer = new ApolloServer({
-      typeDefs: mergeTypeDefs([navigationTypes, bundlesTypes, translationsTypes]),
-      resolvers: merge({}, navigationResolvers, bundlesResolvers, translationsResolvers),
+      typeDefs: mergeTypeDefs([navigationTypes, bundlesTypes, translationsTypes, identityTypes]),
+      resolvers: merge({}, navigationResolvers, bundlesResolvers, translationsResolvers, identityResolvers),
       csrfPrevention: true,
       cache: 'bounded',
       plugins: [
