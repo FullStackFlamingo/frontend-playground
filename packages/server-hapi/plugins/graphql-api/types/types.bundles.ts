@@ -100,7 +100,7 @@ export const typeDefs = gql`
     entities: [BundleEntity]
   }
   type Query {
-    getBundles(path: String): [Bundle]
+    getBundlesForPath(path: String): [Bundle]
   }
 `;
 
@@ -108,8 +108,8 @@ export default typeDefs;
 
 export const resolvers = {
   Query: {
-    getBundles(_parent: any, { url }: { url: string }) {
-      if (url === '/') {
+    getBundlesForPath(_parent: any, { path }: { path: string }) {
+      if (path === '/') {
         return scrapedData;
       }
       return scrapedData;

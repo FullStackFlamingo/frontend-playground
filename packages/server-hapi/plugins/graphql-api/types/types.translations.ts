@@ -4,15 +4,15 @@ export const typeDefs = gql`
   scalar JSON
 
   type Query {
-    getTranslations(url: String, language: String!): JSON
+    getTranslations(path: String, language: String!): JSON
   }
 `;
 export default typeDefs;
 
 export const resolvers = {
   Query: {
-    getTranslations(_parent: any, { url, language }: { url: string; language: string }) {
-      if (url === '/') {
+    getTranslations(_parent: any, { path, language }: { path: string; language: string }) {
+      if (path === '/') {
         return scrapedData[language] ?? {};
       }
       return scrapedData[language] ?? {};
