@@ -16,6 +16,10 @@ A Typescript React 18 isomorphic app, built with Vite.
 
 A Javascript Vue 3 isomorphic app, built with Vite.
 
+## Graphql Playground
+
+http://localhost:3000/graphql
+
 ## Development
 
 - `npm run dev` : starts Vite servers for the frontend UIs, starts the Hapi api & shell app server.
