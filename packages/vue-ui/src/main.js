@@ -1,6 +1,7 @@
 import { createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
 import urql, { dedupExchange, cacheExchange, fetchExchange, ssrExchange } from '@urql/vue';
+import { requestPolicyExchange } from '@urql/exchange-request-policy';
 import App from './App.vue';
 import { createRouter } from './router';
 
@@ -16,7 +17,15 @@ export function createApp({ preloadedUrqlState } = {}) {
   const ssrUrql = ssrExchange({ isClient: !import.meta.env.SSR, initialState: preloadedUrqlState });
   app.use(urql, {
     url: import.meta.env.SSR ? 'http://localhost:3000/graphql' : '/graphql',
-    exchanges: [dedupExchange, cacheExchange, ssrUrql, fetchExchange],
+    exchanges: [
+      dedupExchange,
+      requestPolicyExchange({
+        ttl: 60 * 1000 * 2, // 2 mins
+      }),
+      cacheExchange,
+      ssrUrql,
+      fetchExchange,
+    ],
   });
 
   app.use(router).use(pinia);

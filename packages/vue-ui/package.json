@@ -16,6 +16,7 @@
     "pinia": "2.x",
     "@hapi/bourne": "3.x",
     "@urql/vue": "1.x",
+    "@urql/exchange-request-policy": "1.x",
     "graphql": "16.x"
   },
   "devDependencies": {
