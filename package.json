@@ -16,5 +16,9 @@
   ],
   "devDependencies": {
     "concurrently": "7.x"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
   }
 }
