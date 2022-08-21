@@ -37,21 +37,21 @@ export const typeDefs = gql`
   type EpisodeTitle {
     default: String!
     editorial: String
-    live: Boolean
+    live: String
   }
   type EpisodeSynopsis {
     synopsis: String!
     small: String
     editorial: String
     programmeSmall: String
-    live: Boolean
+    live: String
   }
 
   type EpisodeImage {
     default: String
     promotional: String
     promotionalWithLogo: String
-    live: Boolean
+    live: String
     character: String
     portrait: String
   }
