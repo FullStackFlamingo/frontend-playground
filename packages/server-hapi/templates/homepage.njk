@@ -7,14 +7,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% if isProd %}
+    {# {% if isProd %}
       {% for filename in manifestEntryReactUI.css %}
       <link rel="stylesheet" href="/frontend/@private/react-ui/{{filename}}"></script>
       {% endfor %}
       <script type="module" async src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
     {% else %}
       <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
-    {% endif %}
+    {% endif %} #}
 
     {% if isProd %}
       {% for filename in manifestEntryVueUI.css %}
@@ -25,16 +25,12 @@
       <script type="module" async src="/frontend/@private/vue-ui/src/entry-client.js"></script>
     {% endif %}
 
-    {{ headHtmlReactUI | safe }}
+    {# {{ headHtmlReactUI | safe }} #}
     {{ headHtmlVueUI | safe }}
   </head>
-  <body>
-    <header>Header</header>
-    
-    <div id="react-ui">{{ htmlReactUI | safe }}</div>
+  <body>    
+    {# <div id="react-ui">{{ htmlReactUI | safe }}</div> #}
 
     <div id="vue-ui">{{ htmlVueUI | safe }}</div>
-
-    <footer>Footer</footer>
   </body>
 </html>
