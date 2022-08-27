@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup async>
+<script setup>
 import { useQuery } from '@urql/vue';
 import { useTranslation } from 'i18next-vue';
 const { i18next, t } = useTranslation();

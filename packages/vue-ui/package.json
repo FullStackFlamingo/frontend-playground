@@ -11,6 +11,7 @@
     "build:server": "vite build --config vite.config.ssr.js"
   },
   "dependencies": {
+    "@private/design-system": "1.x",
     "vue": "3.2.x",
     "vue-router": "4.x",
     "pinia": "2.x",
@@ -19,11 +20,13 @@
     "@urql/exchange-request-policy": "1.x",
     "graphql": "16.x",
     "i18next": "21.x",
-    "i18next-vue": "2.0.0-beta.3"
+    "i18next-vue": "2.0.0-beta.3",
+    "sass": "1.x"
   },
   "devDependencies": {
     "vite": "3.x",
     "vitest": "0.x",
-    "@vitejs/plugin-vue": "3.x"
+    "@vitejs/plugin-vue": "3.x",
+    "vite-svg-loader": "3.x"
   }
 }
