@@ -1,6 +1,7 @@
 import { basename } from 'node:path';
 import { renderToString } from 'vue/server-renderer';
 import { createApp } from './main';
+import { GLOBAL_PROP_STATE, GLOBAL_PROP_URQL_STATE } from './constants';
 
 export async function render(url, manifest) {
   const { app, router, pinia, ssrUrql } = await createApp();
@@ -20,8 +21,8 @@ export async function render(url, manifest) {
   // which we can then use to determine what files need to be preloaded for this
   // request.
   const preloadLinks = renderPreloadLinks(ctx.modules, manifest);
-  const stateScript = createStateScript('__VUEUI_STATE__', pinia.state.value);
-  const urqlStateScript = createStateScript('__VUEUI_URQL_STATE__', ssrUrql.extractData());
+  const stateScript = createStateScript(GLOBAL_PROP_STATE, pinia.state.value);
+  const urqlStateScript = createStateScript(GLOBAL_PROP_URQL_STATE, ssrUrql.extractData());
   const headHtml = stateScript + urqlStateScript + preloadLinks;
   return [html, headHtml];
 }

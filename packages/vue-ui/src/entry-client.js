@@ -1,8 +1,9 @@
 import { createApp } from './main';
 import Bourne from '@hapi/bourne';
+import { GLOBAL_PROP_STATE, GLOBAL_PROP_URQL_STATE } from './constants';
 
-const preloadedState = Bourne.parse(window.__VUEUI_STATE__ ?? {});
-const preloadedUrqlState = Bourne.parse(window.__VUEUI_URQL_STATE__ ?? {});
+const preloadedState = Bourne.parse(window[GLOBAL_PROP_STATE] ?? {});
+const preloadedUrqlState = Bourne.parse(window[GLOBAL_PROP_URQL_STATE] ?? {});
 
 const init = async () => {
   const { app, router, pinia } = await createApp({ preloadedUrqlState });
