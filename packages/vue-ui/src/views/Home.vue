@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Vue</h2>
+    <h1>{{ t('home.homepage_title') }}</h1>
     <section v-for="bundle in data.getBundlesForPath" :key="bundle.id">
       <h2>{{ bundle.title.default }}</h2>
       <ul>
@@ -12,12 +12,15 @@
   </div>
 </template>
 
-<script setup>
+<script setup async>
 import { useQuery } from '@urql/vue';
+import { useTranslation } from 'i18next-vue';
+const { i18next, t } = useTranslation();
 
 const { data, error } = await useQuery({
   query: `
   {
+    getTranslations(path:"/", language:"en")
     getBundlesForPath(path:"/") {
       id
       type
@@ -42,10 +45,6 @@ const { data, error } = await useQuery({
     }
   `,
 });
-</script>
-
-<script>
-export default {
-  name: 'Home',
-};
+const { getTranslations } = data.value;
+i18next.addResourceBundle('en', 'translation', { home: getTranslations }, true, true);
 </script>

@@ -3,7 +3,7 @@ import { renderToString } from 'vue/server-renderer';
 import { createApp } from './main';
 
 export async function render(url, manifest) {
-  const { app, router, pinia, ssrUrql } = createApp();
+  const { app, router, pinia, ssrUrql } = await createApp();
 
   // set the router to the desired URL before rendering
   router.push(url);

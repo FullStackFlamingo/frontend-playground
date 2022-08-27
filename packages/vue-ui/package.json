@@ -17,7 +17,9 @@
     "@hapi/bourne": "3.x",
     "@urql/vue": "1.x",
     "@urql/exchange-request-policy": "1.x",
-    "graphql": "16.x"
+    "graphql": "16.x",
+    "i18next": "21.x",
+    "i18next-vue": "2.0.0-beta.3"
   },
   "devDependencies": {
     "vite": "3.x",
