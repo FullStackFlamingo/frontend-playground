@@ -45,6 +45,7 @@ export class SSRAdapter implements ISSRAdapter {
     const viteServer = await vite.createServer({
       root: this.modulePath,
       appType: 'custom',
+      cacheDir: 'node_modules/.vite-ssr',
       server: { middlewareMode: true, hmr: false },
     });
     const importRender = async () => {
