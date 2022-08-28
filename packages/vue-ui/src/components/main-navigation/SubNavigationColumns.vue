@@ -25,6 +25,7 @@ defineProps({
   display: block;
   position: relative;
   padding: 8px 16px;
+  margin: 16px 6px;
   overflow: hidden;
   white-space: nowrap;
   &:focus,
@@ -40,6 +41,7 @@ defineProps({
   }
   .sub-nav__item {
     white-space: normal;
+    margin: 0;
     &:focus,
     &:hover {
       background: white;

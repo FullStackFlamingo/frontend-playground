@@ -41,7 +41,7 @@ const menuOpenProxy = computed({
   display: flex;
   align-items: center;
   height: 64px;
-  padding: 0 8px;
+  padding: 0 calc(var(--size-base-unit) * 4);
 }
 
 .main-nav__logo-wrapper {
@@ -61,9 +61,6 @@ const menuOpenProxy = computed({
 }
 
 @media (min-width: $--breakpoint-md) {
-  .main-nav__header {
-    padding: 0 8px;
-  }
   .main-nav__mobile-button {
     display: none;
   }

@@ -23,9 +23,6 @@ defineProps({
   background-color: var(--color-bg-main--active);
   width: 100%;
 }
-.scroller {
-  height: calc(var(--size-base-unit) * 16);
-}
 
 @media (min-width: $--breakpoint-md) {
   .sub-nav {
@@ -35,9 +32,7 @@ defineProps({
     top: 100%;
     padding: 0 calc(var(--size-base-unit) * 6);
   }
-  .scroller {
-    height: auto;
-  }
+
   .sub-nav--active {
     display: block;
   }

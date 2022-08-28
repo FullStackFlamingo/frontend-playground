@@ -8,7 +8,7 @@
         <li v-for="item in items" :key="item.id">
           <template v-if="item.subItems">
             <button
-              class="main-nav__item main-nav__item--sub font-size-0"
+              class="main-nav__item main-nav__item--sub font--size-0"
               :class="{ 'main-nav__item--active': activeSubNav === item.id }"
               :aria-label="item.ariaLabel"
               @click="toggleSubNavActive(item.id)"
@@ -23,7 +23,7 @@
               <SubNavigationColumns v-else :sub-items="item.subItems" />
             </SubNavigation>
           </template>
-          <a class="main-nav__item font-size-0" v-else :href="item.href" :aria-label="item.ariaLabel">{{
+          <a class="main-nav__item font--size-0" v-else :href="item.href" :aria-label="item.ariaLabel">{{
             item.title
           }}</a>
         </li>
@@ -99,6 +99,7 @@ const menuOpen = ref(false);
 <style scoped lang="scss">
 .main-nav {
   position: relative;
+  z-index: 2;
 }
 
 .main-nav__item-container {
