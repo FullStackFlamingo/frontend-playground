@@ -21,7 +21,8 @@
     "graphql": "16.x",
     "i18next": "21.x",
     "i18next-vue": "2.0.0-beta.3",
-    "sass": "1.x"
+    "sass": "1.x",
+    "@vueuse/core": "9.x"
   },
   "devDependencies": {
     "vite": "3.x",
