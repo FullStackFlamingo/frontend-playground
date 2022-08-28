@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ t('home.homepage_title') }}</h1>
+    <h1 class="sr-only">{{ t('home.homepage_title') }}</h1>
     <section v-for="bundle in data.getBundlesForPath" :key="bundle.id">
       <h2>{{ bundle.title.default }}</h2>
       <ul>

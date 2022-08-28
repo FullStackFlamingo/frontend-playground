@@ -31,9 +31,3 @@ body {
   outline: 2px solid var(--color-accent-1);
 }
 </style>
-
-<style scoped>
-.hidden {
-  display: none;
-}
-</style>

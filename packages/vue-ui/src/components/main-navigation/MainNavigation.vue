@@ -100,9 +100,6 @@ const menuOpen = ref(false);
 .main-nav {
   position: relative;
 }
-.hidden {
-  display: none;
-}
 
 .main-nav__item-container {
   position: absolute;
