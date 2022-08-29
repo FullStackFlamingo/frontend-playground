@@ -4,6 +4,7 @@
       <div class="bundle-section__header">
         <h2 class="bundle-section__header__heading font--bold font--size-3">{{ bundle.title.default }}</h2>
         <a
+          class="bundle-section__view-all font--bold font--size--1"
           :href="`/iplayer/group/${bundle.id}`"
           :aria-label="`View all programmes from the ${bundle.title.default} group`"
         >
@@ -36,5 +37,12 @@ defineProps({
 .bundle-section__header__heading {
   margin-bottom: calc(var(--size-base-unit) * 4);
   flex: 1;
+}
+
+.bundle-section__view-all {
+  &:hover,
+  &:focus {
+    color: var(--color-accent-1);
+  }
 }
 </style>

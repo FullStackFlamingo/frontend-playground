@@ -1,15 +1,30 @@
 <template>
   <div class="bundle-row-arrows">
-    <button class="bundle-row-arrows__button" disabled>
+    <button class="bundle-row-arrows__button" :disabled="leftDisabled" @click="$emit('left')">
       <span class="sr-only">Scroll carousel left</span>
       <SvgUse href="#gel-icon-previous" class="bundle-row-arrows__button__icon" />
     </button>
-    <button class="bundle-row-arrows__button">
+    <button class="bundle-row-arrows__button" :disabled="rightDisabled" @click="$emit('right')">
       <span class="sr-only">Scroll carousel right</span>
       <SvgUse href="#gel-icon-next" class="bundle-row-arrows__button__icon" />
     </button>
   </div>
 </template>
+
+<script setup>
+defineEmits(['left', 'right']);
+
+defineProps({
+  leftDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  rightDisabled: {
+    type: Boolean,
+    default: true,
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .bundle-row-arrows {
