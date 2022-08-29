@@ -40,7 +40,6 @@ export const typeDefs = gql`
     live: String
   }
   type EpisodeSynopsis {
-    synopsis: String!
     small: String
     editorial: String
     programmeSmall: String

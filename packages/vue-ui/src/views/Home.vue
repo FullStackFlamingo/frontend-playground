@@ -35,7 +35,6 @@ const { data, error } = await useQuery({
             live
           }
           subtitle {
-
             default
             editorial
             live
@@ -44,9 +43,9 @@ const { data, error } = await useQuery({
             default
           }
           synopsis {
-            synopsis
             small
             editorial
+            programmeSmall
             live
           }
           live
