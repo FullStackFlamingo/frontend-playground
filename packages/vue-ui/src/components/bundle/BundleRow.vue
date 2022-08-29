@@ -2,6 +2,7 @@
   <div class="bundle-row-wrapper">
     <MainWrapper class="wrapper">
       <BundleRowArrows
+        v-if="bundle.entities.length > maxEntitiesVisible"
         class="bundle-row__arrows"
         :left-disabled="page === 0"
         :right-disabled="page === pageCount"
