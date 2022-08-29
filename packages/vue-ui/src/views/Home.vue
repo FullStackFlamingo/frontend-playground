@@ -1,20 +1,18 @@
 <template>
   <div>
     <h1 class="sr-only">{{ t('home.homepage_title') }}</h1>
-    <section v-for="bundle in data.getBundlesForPath" :key="bundle.id">
-      <h2>{{ bundle.title.default }}</h2>
-      <ul>
-        <li v-for="{ episode } in bundle.entities" :key="episode.id">
-          <h3>{{ episode.title.default }}</h3>
-        </li>
-      </ul>
-    </section>
+    <BundleSection v-for="bundle in bundleRows" :key="bundle.id" :bundle="bundle">
+      <BundleRow :bundle="bundle" />
+    </BundleSection>
   </div>
 </template>
 
 <script setup>
 import { useQuery } from '@urql/vue';
 import { useTranslation } from 'i18next-vue';
+import BundleSection from '../components/bundle/BundleSection.vue';
+import BundleRow from '../components/bundle/BundleRow.vue';
+
 const { i18next, t } = useTranslation();
 
 const { data, error } = await useQuery({
@@ -36,15 +34,34 @@ const { data, error } = await useQuery({
             editorial
             live
           }
+          subtitle {
+
+            default
+            editorial
+            live
+          }
           image {
             default
           }
+          synopsis {
+            synopsis
+            small
+            editorial
+            live
+          }
+          live
+          previewId
+
         }
       }
     }
     }
   `,
 });
+
+const bundleHero = data.value.getBundlesForPath.find((item) => item.type === 'hero');
+const bundleRows = data.value.getBundlesForPath.filter((item) => item.type !== 'hero');
+
 const { getTranslations } = data.value;
 i18next.addResourceBundle('en', 'translation', { home: getTranslations }, true, true);
 </script>

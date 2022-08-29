@@ -1,46 +1,53 @@
+<template>
+  <div class="responsive-image" :class="[`responsive-image--${aspectRatioType}`]">
+    <div class="responsive-image__inner">
+      <picture>
+        <source
+          v-for="({ media, itemWidth, srcset }, key) in sizes"
+          :key="key"
+          :media="media"
+          :sizes="itemWidth"
+          :srcset="recipeToSrcSet(srcset)"
+        />
+
+        <img class="rs-image__img" alt="" fetchpriority="auto" />
+      </picture>
+    </div>
+  </div>
+</template>
+
 <script setup>
-const sizes = {
-  xxl: {
-    recipes: {
-      '1x': '304x171',
-      '1.5x': '464x261',
-    },
-    itemWidth: '296px',
+import { useResponsiveImage } from './responsive-image.js';
+const props = defineProps({
+  recipe: {
+    type: String,
+    required: true,
   },
-  xl: {
-    recipes: {
-      '1x': '240x135',
-      '1.5x': '352x198',
-    },
-    itemWidth: '228px',
+  type: {
+    type: String,
+    default: 'default',
   },
-  l: {
-    recipes: {
-      '1x': '304x171',
-      '1.5x': '464x261',
-    },
-    itemWidth: '33.33vw',
-  },
-  m: {
-    recipes: {
-      '1x': '192x108',
-      '1.5x': '288x162',
-    },
-    itemWidth: '33.33vw',
-  },
-  s: {
-    recipes: {
-      '1x': '288x162',
-      '1.5x': '432x243',
-    },
-    itemWidth: '33.33vw',
-  },
-  xs: {
-    recipes: {
-      '1x': '288x162',
-      '1.5x': '432x243',
-    },
-    itemWidth: '50vw',
-  },
-};
+});
+
+const { recipeToSrcSet, sizes, aspectRatioType } = useResponsiveImage(props);
 </script>
+
+<style lang="scss" scoped>
+.responsive-image {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-bottom: calc(9% / 16 * 100);
+}
+.responsive-image--portrait {
+  padding-bottom: calc(696% / 464 * 100);
+}
+.responsive-image__inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  img {
+    object-fit: fill;
+    width: 100%;
+  }
+}
+</style>

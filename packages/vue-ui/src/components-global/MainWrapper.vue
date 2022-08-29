@@ -1,6 +1,15 @@
 <template>
-  <div class="wrapper"><slot /></div>
+  <component :is="tag" class="wrapper"><slot /></component>
 </template>
+
+<script setup>
+defineProps({
+  tag: {
+    type: String,
+    default: 'div',
+  },
+});
+</script>
 
 <style scoped lang="scss">
 .wrapper {
