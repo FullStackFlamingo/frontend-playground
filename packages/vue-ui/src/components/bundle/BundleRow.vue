@@ -35,7 +35,7 @@ ul.bundle-row {
   right: calc(var(--size-base-unit) * 8);
   top: 50%;
   transform: translate(0, -50%);
-  z-index: 1;
+  z-index: var(--zindex-boost);
 }
 .bundle-row__entity {
   width: 50%;

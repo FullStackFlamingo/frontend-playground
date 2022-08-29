@@ -2,6 +2,10 @@
   --size-main-wrapper: 1280px;
   --size-base-unit: 4px;
 
+  --zindex-skip-content: 10;
+  --zindex-nav: 2;
+  --zindex-boost: 1;
+
   --color-bg-main: #000;
   --color-bg-main--active: #141414;
 

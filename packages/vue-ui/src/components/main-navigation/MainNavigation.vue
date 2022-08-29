@@ -99,7 +99,7 @@ const menuOpen = ref(false);
 <style scoped lang="scss">
 .main-nav {
   position: relative;
-  z-index: 2;
+  z-index: var(--zindex-nav);
 }
 
 .main-nav__item-container {

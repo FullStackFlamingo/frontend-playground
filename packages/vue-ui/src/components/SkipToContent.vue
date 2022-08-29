@@ -11,6 +11,7 @@
   padding: 20px;
   position: fixed;
   transform: translateY(-1000px);
+  z-index: var(--zindex-skip-content);
 }
 
 .skip-to-content-link:focus {
