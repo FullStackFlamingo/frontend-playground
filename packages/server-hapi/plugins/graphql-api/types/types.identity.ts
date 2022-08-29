@@ -23,10 +23,5 @@ export const resolvers = {
   },
 };
 
-const scrapedData = {
-  signedIn: false,
-  privacySettingsUrl: null,
-  personalisationEnabled: false,
-  ageBracket: null,
-  findOutMoreUrl: null,
-};
+import json from '../state/homepage.js';
+const scrapedData = json.identity;
