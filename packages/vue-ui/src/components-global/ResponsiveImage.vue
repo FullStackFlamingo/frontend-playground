@@ -37,6 +37,7 @@ const { recipeToSrcSet, sizes, aspectRatioType } = useResponsiveImage(props);
   position: relative;
   padding-bottom: 56.25%;
   padding-bottom: calc(9% / 16 * 100);
+  width: 100%;
 }
 .responsive-image--portrait {
   padding-bottom: calc(696% / 464 * 100);

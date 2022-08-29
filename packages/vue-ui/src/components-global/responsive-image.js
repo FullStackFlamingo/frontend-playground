@@ -160,7 +160,7 @@ export const useResponsiveImage = (props) => ({
       case 'portrait':
         return SIZES_PORTRAIT;
       case 'hero':
-        return SIZES_PORTRAIT;
+        return SIZES_HERO;
       default:
         return SIZES_DEFAULT;
     }

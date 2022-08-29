@@ -9,13 +9,15 @@
   --color-bg-main: #000;
   --color-bg-main--active: #141414;
 
-  --color-bg-bundle-arrow: #202224;
-  --color-bundle-arrow: #fff;
-  --color-bg-bundle-arrow--active: #fff;
-  --color-bundle-arrow--active: #000;
+  --color-bg-icon-button: #202224;
+  --color-icon-button: #fff;
+  --color-bg-icon-button--active: #fff;
+  --color-icon-button--active: #000;
 
   --color-bg-text: #f6f6f6;
   --color-accent-1: #ff4c98;
+
+  --color-subtle-text: #b0b2b4;
 
   --font-family: ReithSans, Arial, Helvetica, freesans, sans-serif;
 }

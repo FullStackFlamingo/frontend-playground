@@ -22,7 +22,7 @@ const props = defineProps({
 const slug = slugify(props.entity.episode.title.default);
 const href = computed(() => `/iplayer/episode/${props.entity.episode.previewId}/${slug}`);
 const synopsis = computed(() => props.entity.episode.synopsis.small || props.entity.episode.synopsis.editorial);
-const ariaLabel = computed(() => props.entity.episode.title.default + 'Description: ' + synopsis);
+const ariaLabel = computed(() => props.entity.episode.title.default + 'Description: ' + synopsis.value);
 </script>
 
 <style lang="scss" scoped>
