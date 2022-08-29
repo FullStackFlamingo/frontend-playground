@@ -2,7 +2,7 @@
   <section class="bundle-hero">
     <div class="bundle-hero__aspect">
       <div class="bundle-hero__image">
-        <ResponsiveImage type="hero" :recipe="episode.image.default" />
+        <ResponsiveImage type="hero" :recipe="episode.image.promotional" />
         <div class="bundle-hero__image__overlay" />
         <div class="bundle-hero__image__gradient" />
       </div>

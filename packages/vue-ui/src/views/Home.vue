@@ -45,6 +45,8 @@ const { data, error } = await useQuery({
           }
           image {
             default
+            portrait
+            promotional
           }
           synopsis {
             small
