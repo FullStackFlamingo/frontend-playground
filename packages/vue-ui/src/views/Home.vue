@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1 class="sr-only">{{ t('home.homepage_title') }}</h1>
+    <SearchSection class="mobile-only" />
+    <BundleHero :bundle="bundleHero" />
     <BundleSection v-for="bundle in bundleRows" :key="bundle.id" :bundle="bundle">
       <BundleRow :bundle="bundle" />
     </BundleSection>
@@ -10,6 +12,8 @@
 <script setup>
 import { useQuery } from '@urql/vue';
 import { useTranslation } from 'i18next-vue';
+import SearchSection from '../components/SearchSection.vue';
+import BundleHero from '../components/bundle/BundleHero.vue';
 import BundleSection from '../components/bundle/BundleSection.vue';
 import BundleRow from '../components/bundle/BundleRow.vue';
 
@@ -64,3 +68,11 @@ const bundleRows = data.value.getBundlesForPath.filter((item) => item.type !== '
 const { getTranslations } = data.value;
 i18next.addResourceBundle('en', 'translation', { home: getTranslations }, true, true);
 </script>
+
+<style lang="scss" scoped>
+@media (min-width: $--breakpoint-md) {
+  .mobile-only {
+    display: none;
+  }
+}
+</style>
