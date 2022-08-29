@@ -61,6 +61,9 @@ const menuOpenProxy = computed({
 }
 
 @media (min-width: $--breakpoint-md) {
+  .main-nav__header {
+    padding: 0;
+  }
   .main-nav__mobile-button {
     display: none;
   }

@@ -25,7 +25,7 @@
 <style lang="scss" scoped>
 .search-section {
   background-color: var(--color-bg-main--active);
-  padding: calc(var(--size-base-unit) * 4);
+  padding: calc(var(--size-base-unit) * 4) 0;
 }
 
 .search-section__input-wrapper {

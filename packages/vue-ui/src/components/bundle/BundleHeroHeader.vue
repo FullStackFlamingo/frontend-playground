@@ -1,21 +1,23 @@
 <template>
-  <section class="bundle-hero">
-    <div class="bundle-hero__aspect">
-      <div class="bundle-hero__image">
-        <ResponsiveImage type="hero" :recipe="episode.image.default" />
-        <div class="bundle-hero__image__overlay" />
-        <div class="bundle-hero__image__gradient" />
-      </div>
-      <BundleHeroHeader :bundle="bundle" />
-    </div>
-  </section>
+  <MainWrapper class="bundle-hero__header">
+    <h2 class="bundle-hero__heading font--bold font--size-5">{{ episode.title.default }}</h2>
+    <a class="bundle-hero__cta" :href="href" :aria-label="ariaLabel">
+      <span class="bundle-hero__cta__play">
+        <SvgUse href="#gel-icon-play" />
+      </span>
+      <span class="bundle-hero__cta__text">
+        <span class="bundle-hero__cta__heading font--bold font--size--1">Start Watching</span>
+        <span class="font--bold">{{ subtitle }}</span>
+        <span class="bundle-hero__cta__blip" />
+      </span>
+    </a>
+    <p v-if="synopsis" class="bundle-hero__cta__synposis">{{ synopsis }}</p>
+  </MainWrapper>
 </template>
 
 <script setup>
+import slugify from 'slugify';
 import { computed } from 'vue';
-
-import BundleHeroHeader from './BundleHeroHeader.vue';
-
 const props = defineProps({
   bundle: {
     type: Object,
@@ -23,43 +25,14 @@ const props = defineProps({
   },
 });
 const episode = computed(() => props.bundle.entities[0].episode);
+const slug = slugify(episode.value.title.default);
+const href = computed(() => `/iplayer/episode/${episode.value.previewId}/${slug}`);
+const subtitle = computed(() => episode.value.subtitle.editorial);
+const synopsis = computed(() => episode.value.synopsis.small);
+const ariaLabel = computed(() => episode.value.title.default + 'Description: ' + synopsis.value);
 </script>
 
 <style scoped lang="scss">
-.bundle-hero {
-  position: relative;
-  margin: 0 auto;
-  max-width: var(--size-main-wrapper);
-}
-.bundle-hero__aspect {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: calc(9vw / 16 * 100 + 80px);
-}
-
-.bundle-hero__image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.bundle-hero__image__overlay {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.bundle-hero__image__gradient {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 35%;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000);
-}
-
 .bundle-hero__header {
   position: relative;
 }
