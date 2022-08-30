@@ -1,5 +1,6 @@
 :root {
-  --size-main-wrapper: 1280px;
+  --size-main-wrapper: 1000px;
+  --size-main-wrapper-lg: 1280px;
   --size-base-unit: 4px;
 
   --zindex-skip-content: 10;
@@ -9,9 +10,9 @@
   --color-bg-main: #000;
   --color-bg-main--active: #141414;
 
-  --color-bg-icon-button: #202224;
+  --color-bg-main-highlight: #202224;
   --color-icon-button: #fff;
-  --color-bg-icon-button--active: #fff;
+  --color-bg-main-highlight--active: #fff;
   --color-icon-button--active: #000;
 
   --color-bg-text: #f6f6f6;

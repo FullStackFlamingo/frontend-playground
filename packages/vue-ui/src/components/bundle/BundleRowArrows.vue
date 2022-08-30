@@ -33,13 +33,13 @@ defineProps({
 .bundle-row-arrows__button {
   width: 42px;
   height: 42px;
-  background: var(--color-bg-icon-button);
+  background: var(--color-bg-main-highlight);
   fill: var(--color-icon-button);
   cursor: pointer;
   line-height: 1;
   &:hover,
   &:focus {
-    background: var(--color-bg-icon-button--active);
+    background: var(--color-bg-main-highlight--active);
     fill: var(--color-icon-button--active);
   }
   &:disabled {

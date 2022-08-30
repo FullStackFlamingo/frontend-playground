@@ -49,7 +49,7 @@ defineProps({
     }
   }
 }
-@media (min-width: $--breakpoint-lg) {
+@media (min-width: $--breakpoint-xlg) {
   .sub-nav-container {
     columns: 5;
   }

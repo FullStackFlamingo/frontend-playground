@@ -1,11 +1,11 @@
 <template>
   <nav class="sub-nav" :class="{ 'sub-nav--active': active }">
-    <MainWrapper>
+    <div class="wrapper">
       <ScrollXWithButtons class="scroller">
         <slot name="title" />
         <slot />
       </ScrollXWithButtons>
-    </MainWrapper>
+    </div>
   </nav>
 </template>
 

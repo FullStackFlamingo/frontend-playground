@@ -1,6 +1,6 @@
 <template>
   <div class="bundle-row-wrapper">
-    <MainWrapper class="wrapper">
+    <div class="wrapper">
       <BundleRowArrows
         v-if="bundle.entities.length > maxEntitiesVisible"
         class="bundle-row__arrows"
@@ -15,7 +15,7 @@
           <BundleEntity :class="{ 'bundle-entity--obscured': false }" :entity="entity" :type="bundle.type" />
         </li>
       </ul>
-    </MainWrapper>
+    </div>
   </div>
 </template>
 
@@ -104,7 +104,7 @@ watch(
     width: 33.333%;
   }
 }
-@media (min-width: $--breakpoint-lg) {
+@media (min-width: $--breakpoint-xlg) {
   .bundle-row__entity {
     width: 25%;
   }

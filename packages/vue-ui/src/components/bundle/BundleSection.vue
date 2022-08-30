@@ -1,6 +1,6 @@
 <template>
   <section class="bundle-section">
-    <MainWrapper>
+    <div class="wrapper">
       <div class="bundle-section__header">
         <h2 class="bundle-section__header__heading font--bold font--size-3">{{ bundle.title.default }}</h2>
         <a
@@ -11,7 +11,7 @@
           View all
         </a>
       </div>
-    </MainWrapper>
+    </div>
     <slot />
   </section>
 </template>

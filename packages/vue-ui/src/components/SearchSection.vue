@@ -1,12 +1,12 @@
 <template>
   <div class="search-section">
-    <MainWrapper>
+    <div class="wrapper">
       <form action="/iplayer/search" method="get">
         <span class="search-section__input-wrapper">
           <label for="search-input" class="sr-only">Search I Player</label>
           <input
             type="text"
-            class="search-section__input typo font--size-1"
+            class="search-section__input typo font--size-0"
             placeholder="Search iPlayer"
             id="search-input"
             name="q"
@@ -18,7 +18,7 @@
           </button>
         </span>
       </form>
-    </MainWrapper>
+    </div>
   </div>
 </template>
 

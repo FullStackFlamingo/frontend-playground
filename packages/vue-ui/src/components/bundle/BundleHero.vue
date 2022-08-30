@@ -6,7 +6,7 @@
         <div class="bundle-hero__image__overlay" />
         <div class="bundle-hero__image__gradient" />
       </div>
-      <BundleHeroHeader :bundle="bundle" />
+      <BundleHeroHeader class="bundle-hero__header" :bundle="bundle" />
     </div>
   </section>
 </template>
@@ -26,6 +26,9 @@ const episode = computed(() => props.bundle.entities[0].episode);
 </script>
 
 <style scoped lang="scss">
+$--gradientBottom: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
+$--gradientleft: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
+$--gradientRight: linear-gradient(-90deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
 .bundle-hero {
   position: relative;
   margin: 0 auto;
@@ -54,70 +57,46 @@ const episode = computed(() => props.bundle.entities[0].episode);
 .bundle-hero__image__gradient {
   position: absolute;
   left: 0;
-  right: 0;
-  height: 35%;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000);
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: $--gradientBottom;
 }
 
-.bundle-hero__header {
-  position: relative;
-}
-.bundle-hero__cta {
-  display: flex;
-  padding-top: 14px;
-  padding-bottom: 20px;
-  &:hover,
-  &:focus {
-    .bundle-hero__cta__play {
-      background-color: var(--color-accent-1);
-      fill: #fff;
-    }
+@media (min-width: $--breakpoint-lg) {
+  $--headerWidth: 33.3333%;
+  .bundle-hero__aspect {
+    align-items: center;
+    min-height: auto;
+    height: 36vw;
+    max-height: 440px;
+  }
+  .wrapper.bundle-hero__header {
+    max-width: $--headerWidth;
+    margin: 0;
+  }
+  .bundle-hero__image {
+    left: calc($--headerWidth - 50px);
+    width: 88%;
+  }
+  .bundle-hero__image__overlay {
+    display: none;
+  }
+  .bundle-hero__image__gradient {
+    background: $--gradientBottom, $--gradientleft;
   }
 }
-.bundle-hero__cta__synposis {
-  color: var(--color-subtle-text);
-}
-
-.bundle-hero__cta__text {
-  display: block;
-  padding-left: calc(var(--size-base-unit) * 2);
-  margin-bottom: calc(var(--size-base-unit) * 1);
-}
-.bundle-hero__cta__blip {
-  display: block;
-  width: calc(var(--size-base-unit) * 4);
-  height: 1px;
-  background-color: var(--color-accent-1);
-  margin-top: calc(var(--size-base-unit) * 2);
-}
-.bundle-hero__cta__heading {
-  color: var(--color-accent-1);
-  display: block;
-}
-.bundle-hero__cta__play {
-  height: 44px;
-  width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  fill: var(--color-accent-1);
-  flex: none;
-  svg {
-    width: 20px;
-    height: 20px;
+@media (min-width: $--breakpoint-xxlg) {
+  .bundle-hero {
+    max-width: var(--size-main-wrapper-lg);
   }
-}
-
-@media (min-width: $--breakpoint-md) {
-  .bundle-hero__cta__play {
-    height: 72px;
-    width: 72px;
-    svg {
-      width: 30px;
-      height: 30px;
-    }
+  .bundle-hero__image {
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 70%;
+  }
+  .bundle-hero__image__gradient {
+    background: $--gradientBottom, $--gradientleft, $--gradientRight;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <MainWrapper class="bundle-hero__header">
-    <h2 class="bundle-hero__heading font--bold font--size-5">{{ episode.title.default }}</h2>
+  <div class="wrapper bundle-hero__header">
+    <h2 class="bundle-hero__heading font--bold font--size-4">{{ episode.title.default }}</h2>
     <a class="bundle-hero__cta" :href="href" :aria-label="ariaLabel">
       <span class="bundle-hero__cta__play">
         <SvgUse href="#gel-icon-play" />
@@ -12,7 +12,7 @@
       </span>
     </a>
     <p v-if="synopsis" class="bundle-hero__cta__synposis">{{ synopsis }}</p>
-  </MainWrapper>
+  </div>
 </template>
 
 <script setup>
@@ -28,7 +28,7 @@ const episode = computed(() => props.bundle.entities[0].episode);
 const slug = slugify(episode.value.title.default);
 const href = computed(() => `/iplayer/episode/${episode.value.previewId}/${slug}`);
 const subtitle = computed(() => episode.value.subtitle.editorial);
-const synopsis = computed(() => episode.value.synopsis.small);
+const synopsis = computed(() => episode.value.synopsis.editorial);
 const ariaLabel = computed(() => episode.value.title.default + 'Description: ' + synopsis.value);
 </script>
 

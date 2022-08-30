@@ -8,7 +8,7 @@
         <li v-for="item in items" :key="item.id">
           <template v-if="item.subItems">
             <button
-              class="main-nav__item main-nav__item--sub font--size-0"
+              class="main-nav__item main-nav__item--sub font--size--1"
               :class="{ 'main-nav__item--active': activeSubNav === item.id }"
               :aria-label="item.ariaLabel"
               @click="toggleSubNavActive(item.id)"
@@ -23,7 +23,7 @@
               <SubNavigationColumns v-else :sub-items="item.subItems" />
             </SubNavigation>
           </template>
-          <a class="main-nav__item font--size-0" v-else :href="item.href" :aria-label="item.ariaLabel">{{
+          <a class="main-nav__item font--size--1" v-else :href="item.href" :aria-label="item.ariaLabel">{{
             item.title
           }}</a>
         </li>
@@ -100,6 +100,7 @@ const menuOpen = ref(false);
 .main-nav {
   position: relative;
   z-index: var(--zindex-nav);
+  border-bottom: 1px solid var(--color-bg-main-highlight);
 }
 
 .main-nav__item-container {
@@ -133,6 +134,11 @@ const menuOpen = ref(false);
     margin-bottom: 0;
   }
 }
+@media (min-width: $--breakpoint-xxlg) {
+  .main-nav__wrapper {
+    max-width: var(--size-main-wrapper-lg);
+  }
+}
 .main-nav__item {
   display: flex;
   align-items: center;
@@ -147,7 +153,7 @@ const menuOpen = ref(false);
 .main-nav__item--sub {
   display: none;
 }
-@media (min-width: $--breakpoint-lg) {
+@media (min-width: $--breakpoint-xlg) {
   .main-nav__item {
     padding: 0 calc(var(--size-base-unit) * 6);
   }
