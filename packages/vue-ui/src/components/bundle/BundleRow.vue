@@ -11,8 +11,16 @@
       />
 
       <ul class="bundle-row" :style="bundleRowStyle">
-        <li class="bundle-row__entity" v-for="entity in bundle.entities" :key="entity.episode.id">
-          <BundleEntity :class="{ 'bundle-entity--obscured': false }" :entity="entity" :type="bundle.type" />
+        <li class="bundle-row__entity" v-for="(entity, index) in bundle.entities" :key="entity.episode.id">
+          <BundleEntity
+            class="bundle-entity"
+            :class="{
+              'bundle-entity--obscured': mounted && (index >= pageMaxIndex || index < pageMinIndex),
+            }"
+            :entity="entity"
+            :type="bundle.type"
+            @focus="scrollToPageByIndex(index)"
+          />
         </li>
       </ul>
     </div>
@@ -21,7 +29,7 @@
 
 <script setup>
 import { useMediaQuery } from '@vueuse/core';
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 
 import BundleEntity from './BundleEntity.vue';
 import BundleRowArrows from './BundleRowArrows.vue';
@@ -42,7 +50,7 @@ const maxEntitiesVisible = computed(() => {
   return 2;
 });
 const page = ref(0);
-const pageCount = computed(() => (props.bundle.entities.length - 1) / maxEntitiesVisible.value);
+const pageCount = computed(() => Math.floor((props.bundle.entities.length - 1) / maxEntitiesVisible.value));
 
 const bundleRowStyle = computed(() => ({
   transform: `translate(${page.value * -100}%, 0)`,
@@ -62,6 +70,17 @@ watch(
     resetScroll();
   }
 );
+
+const mounted = ref(false);
+onMounted(() => (mounted.value = true));
+
+const pageMinIndex = computed(() => page.value * maxEntitiesVisible.value);
+const pageMaxIndex = computed(() => pageMinIndex.value + maxEntitiesVisible.value);
+
+const scrollToPageByIndex = (index) => {
+  const targetPage = Math.floor(index / maxEntitiesVisible.value);
+  page.value = targetPage;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -94,6 +113,9 @@ watch(
   flex-shrink: 0;
   flex-grow: 0;
   padding-right: calc(var(--size-base-unit) * 2);
+}
+.bundle-entity {
+  transition: opacity 0.3s 0.2s;
 }
 .bundle-entity--obscured {
   opacity: 0.3;
