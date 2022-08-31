@@ -38,6 +38,7 @@ defineProps({
     white-space: normal;
     display: block;
     columns: 3;
+    padding: calc(var(--size-base-unit) * 2) 0;
   }
   .sub-nav__item {
     white-space: normal;
