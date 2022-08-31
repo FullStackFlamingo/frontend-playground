@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run debug --prefix packages/server-hapi\" \"npm run dev --prefix packages/react-ui\" \"npm run dev --prefix packages/vue-ui\"",
+    "dev": "concurrently --raw \"npm run debug --prefix packages/server-hapi\" \"npm run dev --prefix packages/react-ui\" \"npm run dev --prefix packages/vue-ui\"",
     "build": "npm run build -ws --if-present",
     "start": "npm run start --prefix packages/server-hapi "
   },

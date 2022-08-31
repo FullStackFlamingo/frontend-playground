@@ -7,30 +7,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {# {% if isProd %}
-      {% for filename in manifestEntryReactUI.css %}
-      <link rel="stylesheet" href="/frontend/@private/react-ui/{{filename}}"></script>
-      {% endfor %}
-      <script type="module" async src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
-    {% else %}
-      <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
-    {% endif %} #}
+    
 
-    {% if isProd %}
-      {% for filename in manifestEntryVueUI.css %}
-      <link rel="stylesheet" href="/frontend/@private/vue-ui/{{filename}}"></script>
-      {% endfor %}
-      <script type="module" async src="/frontend/@private/vue-ui/{{manifestEntryVueUI.file}}"></script>
+    {% if app == 'vue-ui' %}
+
+      {% if isProd %}
+        {% for filename in manifestEntryVueUI.css %}
+        <link rel="stylesheet" href="/frontend/@private/vue-ui/{{filename}}"></script>
+        {% endfor %}
+        <script type="module" async src="/frontend/@private/vue-ui/{{manifestEntryVueUI.file}}"></script>
+      {% else %}
+        <script type="module" async src="/frontend/@private/vue-ui/src/entry-client.js"></script>
+      {% endif %}
+      {{ headHtmlVueUI | safe }}
+
     {% else %}
-      <script type="module" async src="/frontend/@private/vue-ui/src/entry-client.js"></script>
+
+      {% if isProd %}
+        {% for filename in manifestEntryReactUI.css %}
+        <link rel="stylesheet" href="/frontend/@private/react-ui/{{filename}}"></script>
+        {% endfor %}
+        <script type="module" async src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
+      {% else %}
+        <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
+      {% endif %}
+      {{ headHtmlReactUI | safe }}
+
     {% endif %}
 
-    {# {{ headHtmlReactUI | safe }} #}
-    {{ headHtmlVueUI | safe }}
   </head>
-  <body>    
-    {# <div id="react-ui">{{ htmlReactUI | safe }}</div> #}
+  <body>  
 
+    {% if app === 'vue-ui' %}
+    <form action="/">
+      <button>Switch to React Version</button>
+      </form>  
     <div id="vue-ui">{{ htmlVueUI | safe }}</div>
+    {% else %}
+      <form action="/">
+        <input type="hidden" name="app" value="vue-ui" /> 
+      <button>Switch to Vue Version</button>
+      </form>  
+    <div id="react-ui">{{ htmlReactUI | safe }}</div>
+    {% endif %}
+
   </body>
 </html>
