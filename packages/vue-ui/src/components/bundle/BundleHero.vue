@@ -1,5 +1,5 @@
 <template>
-  <div class="bundle-hero-overflo">
+  <div class="bundle-hero-overflow">
     <section class="bundle-hero">
       <div class="bundle-hero__aspect">
         <div class="bundle-hero__image">
