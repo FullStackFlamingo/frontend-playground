@@ -1,14 +1,16 @@
 <template>
-  <section class="bundle-hero">
-    <div class="bundle-hero__aspect">
-      <div class="bundle-hero__image">
-        <ResponsiveImage type="hero" :recipe="episode.image.promotional" />
-        <div class="bundle-hero__image__overlay" />
-        <div class="bundle-hero__image__gradient" />
+  <div class="bundle-hero-overflo">
+    <section class="bundle-hero">
+      <div class="bundle-hero__aspect">
+        <div class="bundle-hero__image">
+          <ResponsiveImage type="hero" :recipe="episode.image.promotional" />
+          <div class="bundle-hero__image__overlay" />
+          <div class="bundle-hero__image__gradient" />
+        </div>
+        <BundleHeroHeader class="bundle-hero__header" :bundle="bundle" />
       </div>
-      <BundleHeroHeader class="bundle-hero__header" :bundle="bundle" />
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -29,6 +31,9 @@ const episode = computed(() => props.bundle.entities[0].episode);
 $--gradientBottom: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
 $--gradientleft: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
 $--gradientRight: linear-gradient(-90deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 35%);
+.bundle-hero-overflow {
+  overflow: hidden;
+}
 .bundle-hero {
   position: relative;
   margin: 0 auto;
