@@ -35,7 +35,7 @@ export const typeDefs = gql`
   }
 
   type EpisodeTitle {
-    default: String!
+    default: String
     editorial: String
     live: String
   }

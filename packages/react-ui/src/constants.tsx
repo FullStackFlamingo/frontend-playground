@@ -1,0 +1,2 @@
+export const GLOBAL_PROP_STATE = '__REACTUI_STATE__';
+export const GLOBAL_PROP_URQL_STATE = '__REACTUI_URQL_STATE__';

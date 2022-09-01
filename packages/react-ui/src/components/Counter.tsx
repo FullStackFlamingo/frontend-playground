@@ -5,9 +5,6 @@ import { RootState } from '../store';
 export const Counter = () => {
   const dispatch = useDispatch();
 
-  if (import.meta.env.SSR) {
-    dispatch(incrementByAmount(3));
-  }
   const count = useSelector((state: RootState) => state.counter.value);
 
   const onClickIncrement = () => dispatch(increment());
