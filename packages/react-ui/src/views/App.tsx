@@ -1,5 +1,5 @@
-import './App.css';
-import { Counter } from './components/Counter';
+import '@private/design-system/index.css';
+import { Counter } from '../components/Counter';
 
 function App() {
   return (

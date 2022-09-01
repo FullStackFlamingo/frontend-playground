@@ -18,7 +18,7 @@ const SSRAdapterVueUI = new SSRAdapter({
 
 const homepage = {
   method: 'GET',
-  path: '/',
+  path: '/{path*}',
   async handler(request: Request, h: ResponseToolkit) {
     const url = request.url.pathname + request.url.search;
     const { app } = request.query;
@@ -30,7 +30,7 @@ const homepage = {
     const manifestEntryVueUI = SSRAdapterVueUI.getClientManifestEntry();
 
     try {
-      const htmlOut = await Nunjucks.render('homepage.njk', {
+      const htmlOut = await Nunjucks.render('skeleton.njk', {
         app,
         isProd,
         htmlReactUI,

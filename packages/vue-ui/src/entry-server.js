@@ -24,7 +24,7 @@ export async function render(url, manifest) {
   const stateScript = createStateScript(GLOBAL_PROP_STATE, pinia.state.value);
   const urqlStateScript = createStateScript(GLOBAL_PROP_URQL_STATE, ssrUrql.extractData());
   const headHtml = stateScript + urqlStateScript + preloadLinks;
-  return [html, headHtml];
+  return { html, headHtml };
 }
 
 function createStateScript(varName, value) {

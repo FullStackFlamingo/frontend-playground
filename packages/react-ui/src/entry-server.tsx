@@ -4,7 +4,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-redux';
 import { EnhancedStore } from '@reduxjs/toolkit';
 import { createStore } from './store';
-import App from './App';
+import Routes from './routes';
 
 export function render(url: string) {
   const store = createStore();
@@ -13,14 +13,14 @@ export function render(url: string) {
     <React.StrictMode>
       <Provider store={store}>
         <StaticRouter location={url}>
-          <App />
+          <Routes />
         </StaticRouter>
       </Provider>
     </React.StrictMode>
   );
   const stateScript = createStateScript(store);
   const headHtml = stateScript;
-  return [appHtml, headHtml];
+  return { appHtml, headHtml };
 }
 
 const createStateScript = (store: EnhancedStore): string => {

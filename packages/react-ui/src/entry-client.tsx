@@ -4,7 +4,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from './store';
-import App from './App';
+import Routes from './routes';
 
 const preloadedState = Bourne.parse(window.__REACTUI_STATE__ ?? {});
 const store = createStore(preloadedState);
@@ -13,7 +13,7 @@ const RootApp = () => (
   <React.StrictMode>
     <Provider store={store} serverState={preloadedState}>
       <BrowserRouter>
-        <App />
+        <Routes />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
