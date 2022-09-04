@@ -11,7 +11,22 @@ export default defineConfig({
     },
   },
   base: '/frontend/@private/react-ui/',
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [
+            // https://github.com/styled-components/babel-plugin-styled-components/issues/350#issuecomment-979873241
+            'babel-plugin-styled-components',
+            {
+              displayName: true,
+              fileName: false,
+            },
+          ],
+        ],
+      },
+    }),
+  ],
   build: {
     manifest: true,
     ssrManifest: true,

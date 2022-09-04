@@ -30,3 +30,7 @@ http://localhost:3000/graphql
   - /frontend/@private/vue-ui/{p\*} proxy route localhost:3210
 - `npm run build` : Build frontend UIs, and typescript Hapi server
 - `npm run start`: (after a successful build) , starts production Hapi server + frontend UIs
+
+## Notes
+
+- Is `defaultProps` being deprecated or not? https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#deprecate-defaultprops-on-function-components

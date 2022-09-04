@@ -7,6 +7,7 @@ import { createStore } from './store';
 import { createUrqlProvider } from './urql-provider';
 import Routes from './routes';
 import { GLOBAL_PROP_STATE, GLOBAL_PROP_URQL_STATE } from './constants';
+import iconSprite from '@private/design-system/icons.svg?raw';
 
 export async function render(url: string) {
   const store = createStore();
@@ -19,6 +20,7 @@ export async function render(url: string) {
           <Routes />
         </StaticRouter>
       </UrqlProvider>
+      <div className="hidden" dangerouslySetInnerHTML={{ __html: iconSprite }} />
     </Provider>
   );
   let appHtml;
