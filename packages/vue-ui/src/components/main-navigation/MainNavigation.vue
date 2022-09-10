@@ -82,7 +82,6 @@ const { data, error } = await useQuery({
 });
 
 const items = computed(() => data.value?.getNavigationItems?.items ?? []);
-const navsWithSubItems = computed(() => items.value?.filter((item) => item.subItems));
 
 const activeSubNav = ref(null);
 const toggleSubNavActive = (itemId) => {
