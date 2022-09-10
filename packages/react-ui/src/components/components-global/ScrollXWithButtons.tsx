@@ -32,11 +32,13 @@ const ScrollerButton = styled.button`
 interface ScrollXWithButtonsProps {
   leftAriaLabel?: string;
   rightAriaLabel?: string;
+  children: React.ReactNode;
 }
 
 export function ScrollXWithButtons({
   leftAriaLabel = 'scroll left',
   rightAriaLabel = 'scroll right',
+  children,
 }: ScrollXWithButtonsProps) {
   const scrollerArea = useRef<HTMLDivElement>(null);
   const scrollValues = useScroll(scrollerArea);
@@ -64,9 +66,7 @@ export function ScrollXWithButtons({
         </ScrollerButton>
       )}
 
-      <ScrollerArea ref={scrollerArea}>
-        <slot />
-      </ScrollerArea>
+      <ScrollerArea ref={scrollerArea}>{children}</ScrollerArea>
       {canScroll && (
         <ScrollerButton
           v-if="canScroll"
