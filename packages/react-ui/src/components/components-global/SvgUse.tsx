@@ -2,7 +2,6 @@ interface SvgUseProps {
   href: string;
   className?: string;
 }
-
 export function SvgUse({ href, className }: SvgUseProps) {
   return (
     <svg className={className} role="presentation" focusable="false">

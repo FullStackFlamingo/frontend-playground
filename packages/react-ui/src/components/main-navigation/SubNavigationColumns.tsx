@@ -1,10 +1,5 @@
 import { breakpoint } from '@private/design-system/vars';
 import styled from 'styled-components';
-import { SubNavItem } from './MainNavgiation';
-
-interface SubNavigationColumnsProps {
-  subItems: Array<SubNavItem>;
-}
 
 const SubNavigationColumnsRoot = styled.ul`
   display: flex;
@@ -41,6 +36,9 @@ const SubNavItemAnchor = styled.a`
   }
 `;
 
+interface SubNavigationColumnsProps {
+  subItems: Array<IPlayer.MainNav.SubNavItem>;
+}
 export function SubNavigationColumns({ subItems }: SubNavigationColumnsProps) {
   return (
     <SubNavigationColumnsRoot>

@@ -61,7 +61,7 @@ const BundleHeroSynopsis = styled.p`
 
 interface BundleHeroHeaderProps {
   className?: string;
-  bundle: Bundle;
+  bundle: IPlayer.Bundle;
 }
 export function BundleHeroHeader({ bundle, className }: BundleHeroHeaderProps) {
   const episode = useMemo(() => bundle.entities[0].episode, [bundle]);

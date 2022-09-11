@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 import { SvgUse } from '../components-global/SvgUse';
-import { SubNavItem } from './MainNavgiation';
-
-interface SubNavigationChannelsProps {
-  subItems: Array<SubNavItem>;
-}
 
 const SubNavigationChannelsRoot = styled.ul`
   display: flex;
@@ -32,6 +27,9 @@ const SubNavItemIconSvgUseFocused = styled(SubNavItemIconSvgUse)`
   }
 `;
 
+interface SubNavigationChannelsProps {
+  subItems: Array<IPlayer.MainNav.SubNavItem>;
+}
 export function SubNavigationChannels({ subItems }: SubNavigationChannelsProps) {
   return (
     <SubNavigationChannelsRoot>

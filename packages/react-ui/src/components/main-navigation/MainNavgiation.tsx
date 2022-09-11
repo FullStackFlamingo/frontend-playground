@@ -120,31 +120,11 @@ const SvgUseArrow = styled(SvgUse)`
   fill: currentColor;
 `;
 
-export interface SubNavItem {
-  id: string;
-  title: string;
-  active: boolean;
-  ariaLabel: string;
-  href: string;
-  liveHref: string;
-  icon: string;
-  kind: string;
-}
-
-interface TopNavItem {
-  id: string;
-  title: string;
-  active: boolean;
-  ariaLabel: string;
-  href: string;
-  subItems: Array<SubNavItem>;
-}
-
 export function MainNavigation() {
   const [result] = useQuery({ query });
   const { data, fetching, error } = result;
 
-  const items: [TopNavItem] = useMemo(() => data.getNavigationItems?.items, [data]);
+  const items: [IPlayer.MainNav.TopNavItem] = useMemo(() => data.getNavigationItems?.items, [data]);
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeSubNav, setActiveSubNav] = useState<string | null>(null);

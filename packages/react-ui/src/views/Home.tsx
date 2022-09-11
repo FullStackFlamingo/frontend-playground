@@ -59,8 +59,14 @@ function Home() {
   const [result] = useQuery({ query });
   const { data, fetching, error } = result;
 
-  const bundleHero = useMemo(() => data.getBundlesForPath?.find((item: Bundle) => item.type === 'hero'), [data]);
-  const bundleRows = useMemo(() => data.getBundlesForPath?.filter((item: Bundle) => item.type !== 'hero'), [data]);
+  const bundleHero = useMemo(
+    () => data.getBundlesForPath?.find((item: IPlayer.Bundle) => item.type === 'hero'),
+    [data]
+  );
+  const bundleRows = useMemo(
+    () => data.getBundlesForPath?.filter((item: IPlayer.Bundle) => item.type !== 'hero'),
+    [data]
+  );
 
   return (
     <HomeRoot>

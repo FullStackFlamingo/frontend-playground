@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 
-export interface ResponsiveSize {
+interface ResponsiveSize {
   media: string;
   srcset: {
     [index: string]: string;
   };
   itemWidth: string;
 }
-export interface ResponsiveSizeGroup {
+interface ResponsiveSizeGroup {
   [index: string]: ResponsiveSize;
 }
 const SIZES_DEFAULT: ResponsiveSizeGroup = {
