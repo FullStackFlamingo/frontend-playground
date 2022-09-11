@@ -3,7 +3,6 @@
   "private": true,
   "license": "MIT",
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "npm run build:client && npm run build:server",

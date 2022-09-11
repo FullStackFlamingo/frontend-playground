@@ -11,27 +11,27 @@
 
     {% if app == 'vue-ui' %}
 
+      {{ headHtmlVueUI | safe }}
       {% if isProd %}
         {% for filename in manifestEntryVueUI.css %}
         <link rel="stylesheet" href="/frontend/@private/vue-ui/{{filename}}"></script>
         {% endfor %}
-        <script type="module" defer src="/frontend/@private/vue-ui/{{manifestEntryVueUI.file}}"></script>
+        <script type="module" async src="/frontend/@private/vue-ui/{{manifestEntryVueUI.file}}"></script>
       {% else %}
-        <script type="module" defer src="/frontend/@private/vue-ui/src/entry-client.js"></script>
+        <script type="module" async src="/frontend/@private/vue-ui/src/entry-client.js"></script>
       {% endif %}
-      {{ headHtmlVueUI | safe }}
 
     {% else %}
 
+      {{ headHtmlReactUI | safe }}
       {% if isProd %}
         {% for filename in manifestEntryReactUI.css %}
         <link rel="stylesheet" href="/frontend/@private/react-ui/{{filename}}"></script>
         {% endfor %}
-        <script type="module" defer src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
+        <script type="module" async src="/frontend/@private/react-ui/{{manifestEntryReactUI.file}}"></script>
       {% else %}
-        <script type="module" defer src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
+        <script type="module" async src="/frontend/@private/react-ui/src/entry-client.tsx"></script>
       {% endif %}
-      {{ headHtmlReactUI | safe }}
 
     {% endif %}
 
