@@ -33,8 +33,9 @@ export async function createApp({ preloadedUrqlState } = {}) {
   });
 
   /* i18NEXT */
-  await i18next.init({ lng: 'en' });
-  app.use(I18NextVue, { i18next });
+  const i18nextInstance = i18next.createInstance();
+  await i18nextInstance.init({ lng: 'en' });
+  app.use(I18NextVue, { i18next: i18nextInstance });
 
   app.use(router).use(pinia);
 
