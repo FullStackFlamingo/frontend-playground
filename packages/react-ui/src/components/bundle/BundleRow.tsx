@@ -12,7 +12,10 @@ const BundleRowRoot = styled.div`
 
 const BundleWrapper = styled.div`
   position: relative;
-  padding-right: calc(var(--size-base-unit) * 12);
+  && {
+    //https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity
+    padding-right: calc(var(--size-base-unit) * 12);
+  }
 `;
 
 const BundleRowArrowsStyled = styled(BundleRowArrows)`
@@ -30,7 +33,7 @@ const BundleRowUl = styled.ul<{ page: number }>`
   transform: translate(${(props) => props.page * -100}%, 0);
 `;
 
-const BundleRowLi = styled.ul<{ obscured: boolean }>`
+const BundleRowLi = styled.li<{ obscured: boolean }>`
   width: 50%;
   flex-basis: auto;
   flex-shrink: 0;
