@@ -1,33 +1,33 @@
-import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import prepass from 'react-ssr-prepass';
 import { Provider } from 'react-redux';
 import { createStore } from './store';
 import { createUrqlProvider } from './urql-provider';
-import Routes from './routes';
+import App from './App';
 import { GLOBAL_PROP_STATE, GLOBAL_PROP_URQL_STATE } from './constants';
-import iconSprite from '@private/design-system/icons.svg?raw';
+import { initi18n } from './i18n';
 
 export async function render(url: string) {
   const store = createStore();
   const { UrqlProvider, ssrUrql } = createUrqlProvider();
 
-  const AppRoot = (
+  await initi18n();
+
+  const AppWrapper = (
     <Provider store={store}>
       <UrqlProvider>
         <StaticRouter location={url}>
-          <Routes />
+          <App />
         </StaticRouter>
       </UrqlProvider>
-      <div className="hidden" dangerouslySetInnerHTML={{ __html: iconSprite }} />
     </Provider>
   );
   let appHtml;
 
   try {
-    await prepass(AppRoot);
-    appHtml = ReactDOMServer.renderToString(AppRoot);
+    await prepass(AppWrapper);
+    appHtml = ReactDOMServer.renderToString(AppWrapper);
   } catch (error) {
     console.log(error);
     throw error;

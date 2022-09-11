@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useQuery } from 'urql';
-import { SearchSection } from '../components/SearchSection';
 import { breakpoint } from '@private/design-system/vars';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { SearchSection } from '../components/SearchSection';
 import { BundleHero } from '../components/bundle/BundleHero';
 
 const query = `
@@ -56,8 +57,11 @@ const HomeRoot = styled.div`
 `;
 
 function Home() {
+  const { i18n, t } = useTranslation();
   const [result] = useQuery({ query });
   const { data, fetching, error } = result;
+
+  i18n.addResourceBundle('en', 'translation', { home: data.getTranslations }, true, true); // awkward i18n merge on render?
 
   const bundleHero = useMemo(
     () => data.getBundlesForPath?.find((item: IPlayer.Bundle) => item.type === 'hero'),
@@ -70,7 +74,7 @@ function Home() {
 
   return (
     <HomeRoot>
-      <h1 className="sr-only">home.homepage_title </h1>
+      <h1 className="sr-only">{t('home.homepage_title')}</h1>
       <SearchSection className="mobile-only" />
       {bundleHero && <BundleHero bundle={bundleHero} />}
       {/*
