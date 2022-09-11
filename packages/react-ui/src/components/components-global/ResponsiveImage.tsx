@@ -18,14 +18,15 @@ const ResponsiveImageImg = styled.img`
 `;
 
 interface ResponsiveImageProps {
+  className?: string;
   recipe: string;
   type?: string;
 }
-export function ResponsiveImage({ recipe, type = 'default' }: ResponsiveImageProps) {
+export function ResponsiveImage({ className, recipe, type = 'default' }: ResponsiveImageProps) {
   const { recipeToSrcSet, sizes, aspectRatioType } = useResponsiveImage({ recipe, type });
 
   return (
-    <ResponsiveImageRoot type={aspectRatioType}>
+    <ResponsiveImageRoot type={aspectRatioType} className={className}>
       <ResponsiveImageInner>
         <picture>
           {Object.values(sizes).map((size) => (

@@ -5,6 +5,8 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SearchSection } from '../components/SearchSection';
 import { BundleHero } from '../components/bundle/BundleHero';
+import { BundleSection } from '../components/bundle/BundleSection';
+import { BundleRow } from '../components/bundle/BundleRow';
 
 const query = `
 {
@@ -77,10 +79,11 @@ function Home() {
       <h1 className="sr-only">{t('home.homepage_title')}</h1>
       <SearchSection className="mobile-only" />
       {bundleHero && <BundleHero bundle={bundleHero} />}
-      {/*
-    <BundleSection v-for="bundle in bundleRows" :key="bundle.id" :bundle="bundle">
-      <BundleRow :bundle="bundle" />
-    </BundleSection> */}
+      {bundleRows.map((bundle: IPlayer.Bundle) => (
+        <BundleSection key={bundle.id} bundle={bundle}>
+          <BundleRow bundle={bundle} />
+        </BundleSection>
+      ))}
     </HomeRoot>
   );
 }

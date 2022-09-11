@@ -34,7 +34,7 @@ const BundleHeroCtaPlay = styled.span`
     }
   }
   ${BundleHeroCta}:focus &,
-    ${BundleHeroCta}:hover & {
+  ${BundleHeroCta}:hover & {
     background-color: var(--color-accent-1);
     fill: #fff;
   }
