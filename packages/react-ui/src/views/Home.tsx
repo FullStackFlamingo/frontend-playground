@@ -3,6 +3,7 @@ import { useQuery } from 'urql';
 import { SearchSection } from '../components/SearchSection';
 import { breakpoint } from '@private/design-system/vars';
 import { useMemo } from 'react';
+import { BundleHero } from '../components/bundle/BundleHero';
 
 const query = `
 {
@@ -58,10 +59,6 @@ function Home() {
   const [result] = useQuery({ query });
   const { data, fetching, error } = result;
 
-  interface Bundle {
-    type: string;
-  }
-
   const bundleHero = useMemo(() => data.getBundlesForPath?.find((item: Bundle) => item.type === 'hero'), [data]);
   const bundleRows = useMemo(() => data.getBundlesForPath?.filter((item: Bundle) => item.type !== 'hero'), [data]);
 
@@ -69,8 +66,8 @@ function Home() {
     <HomeRoot>
       <h1 className="sr-only">home.homepage_title </h1>
       <SearchSection className="mobile-only" />
-      {JSON.stringify(bundleHero)}
-      {/* <BundleHero :bundle="bundleHero" />
+      {bundleHero && <BundleHero bundle={bundleHero} />}
+      {/*
     <BundleSection v-for="bundle in bundleRows" :key="bundle.id" :bundle="bundle">
       <BundleRow :bundle="bundle" />
     </BundleSection> */}

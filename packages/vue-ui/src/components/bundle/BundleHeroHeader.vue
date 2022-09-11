@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper bundle-hero__header">
-    <h2 class="bundle-hero__heading font--bold font--size-4">{{ episode.title.default }}</h2>
+    <h2 class="font--bold font--size-4">{{ episode.title.default }}</h2>
     <a class="bundle-hero__cta" :href="href" :aria-label="ariaLabel">
       <span class="bundle-hero__cta__play">
         <SvgUse href="#gel-icon-play" />

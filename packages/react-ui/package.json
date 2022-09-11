@@ -25,7 +25,8 @@
     "urql": "3.x",
     "@urql/exchange-request-policy": "1.x",
     "@react-hook/resize-observer": "1.2.6",
-    "react-use": "17.x"
+    "react-use": "17.x",
+    "slugify": "1.x"
   },
   "devDependencies": {
     "vite": "3.x",
