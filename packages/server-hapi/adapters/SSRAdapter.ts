@@ -53,7 +53,7 @@ export class SSRAdapter implements ISSRAdapter {
         const devScripts: string = await viteServer.transformIndexHtml(url, '');
 
         const { appHtml, headHtml = '' } = await res.render(url, this.ssrManifest, ...args);
-        return { appHtml, appHeadHtml: devScripts + headHtml };
+        return { appHtml, headHtml: devScripts + headHtml };
       };
     };
     this.render = await importRender();

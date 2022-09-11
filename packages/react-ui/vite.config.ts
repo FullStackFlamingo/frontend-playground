@@ -19,6 +19,7 @@ export default defineConfig({
             // https://github.com/styled-components/babel-plugin-styled-components/issues/350#issuecomment-979873241
             'babel-plugin-styled-components',
             {
+              ssr: true,
               displayName: true,
               fileName: false,
             },

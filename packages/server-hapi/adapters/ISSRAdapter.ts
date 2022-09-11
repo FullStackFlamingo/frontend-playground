@@ -1,6 +1,6 @@
 import { ServerRoute } from '@hapi/hapi';
 
-type RenderParams = { appHtml: string; appHeadHtml?: string };
+type RenderParams = { appHtml: string; headHtml?: string };
 export type RenderFunction = (url: string, ...args: any) => Promise<RenderParams>;
 
 export type AssetRouteConfig = {

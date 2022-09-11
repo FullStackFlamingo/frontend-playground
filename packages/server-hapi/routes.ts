@@ -22,23 +22,29 @@ const homepage = {
   async handler(request: Request, h: ResponseToolkit) {
     const url = request.url.pathname + request.url.search;
     const { app } = request.query;
-
-    const { appHtml: htmlReactUI, appHeadHtml: headHtmlReactUI } = await SSRAdapterReactUI.render(url);
-    const { appHtml: htmlVueUI, appHeadHtml: headHtmlVueUI } = await SSRAdapterVueUI.render(url);
-
-    const manifestEntryReactUI = SSRAdapterReactUI.getClientManifestEntry();
-    const manifestEntryVueUI = SSRAdapterVueUI.getClientManifestEntry();
-
     try {
+      if (app === 'vue-ui') {
+        const { appHtml: htmlVueUI, headHtml: headHtmlVueUI } = await SSRAdapterVueUI.render(url);
+        const manifestEntryVueUI = SSRAdapterVueUI.getClientManifestEntry();
+        const htmlOut = await Nunjucks.render('skeleton.njk', {
+          app,
+          isProd,
+          htmlVueUI,
+          headHtmlVueUI,
+          manifestEntryVueUI,
+        });
+        return h.response(htmlOut);
+      }
+
+      const { appHtml: htmlReactUI, headHtml: headHtmlReactUI } = await SSRAdapterReactUI.render(url);
+      const manifestEntryReactUI = SSRAdapterReactUI.getClientManifestEntry();
+
       const htmlOut = await Nunjucks.render('skeleton.njk', {
         app,
         isProd,
         htmlReactUI,
         headHtmlReactUI,
         manifestEntryReactUI,
-        htmlVueUI,
-        headHtmlVueUI,
-        manifestEntryVueUI,
       });
       return h.response(htmlOut);
     } catch (err) {
