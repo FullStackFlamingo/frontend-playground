@@ -2,6 +2,8 @@
 
 7 years experience in Vue, not nearly as much in React! I better bring myself up to speed on Facebook's oh so popular ecosystem...
 
+!["Clone of a certain video player site](preview.png 'Clone of a certain video player site')
+
 # Packages
 
 ## server-hapi
