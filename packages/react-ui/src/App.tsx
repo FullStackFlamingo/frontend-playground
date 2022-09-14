@@ -7,7 +7,7 @@ import '@private/design-system/index.css';
 
 function App() {
   return (
-    <div>
+    <main>
       <SkipToContent />
       <MainNavigation />
       <div id="main-content">
@@ -16,7 +16,7 @@ function App() {
         </Routes>
       </div>
       <div className="hidden" dangerouslySetInnerHTML={{ __html: iconSprite }} />
-    </div>
+    </main>
   );
 }
 

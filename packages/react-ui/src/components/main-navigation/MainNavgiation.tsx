@@ -53,7 +53,7 @@ const MainNavigationRoot = styled.nav`
 const MainNavigationWrapper = styled.div`
   @media (min-width: ${breakpoint.md}) {
     display: flex;
-    padding: 0 16px;
+    padding: 0 calc(var(--size-base-unit) * 4);
     margin: 0 auto;
     width: 100%;
     max-width: var(--size-main-wrapper);

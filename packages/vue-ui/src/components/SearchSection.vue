@@ -33,7 +33,7 @@
 }
 .search-section__input {
   width: 100%;
-  height: 32px;
+  height: calc(var(--size-base-unit) * 8);
   padding: calc(var(--size-base-unit) * 2);
   padding-right: calc(var(--size-base-unit) * 10);
   color: #000;

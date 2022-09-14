@@ -79,8 +79,10 @@ const BundleHeroImageGradient = styled.div`
 
 const BundleHeroHeaderStyled = styled(BundleHeroHeader)`
   @media (min-width: ${breakpoint.lg}) {
-    max-width: ${cssValHeaderWidth};
-    margin: 0;
+    && {
+      max-width: ${cssValHeaderWidth};
+      margin: 0;
+    }
   }
 `;
 

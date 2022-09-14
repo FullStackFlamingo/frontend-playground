@@ -2,7 +2,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: var(--size-main-wrapper);
-  padding: 0 16px;
+  padding: 0 calc(var(--size-base-unit) * 4);
 }
 
 @media (min-width: 80em) {

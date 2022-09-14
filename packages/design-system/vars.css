@@ -1,7 +1,7 @@
 :root {
-  --size-main-wrapper: 1000px;
-  --size-main-wrapper-lg: 1280px;
-  --size-base-unit: 4px;
+  --size-main-wrapper: 62.5rem; /* 1000px */
+  --size-main-wrapper-lg: 80rem; /* 1280px */
+  --size-base-unit: 0.25rem; /*4px */
 
   --zindex-skip-content: 10;
   --zindex-nav: 2;

@@ -2,122 +2,122 @@
   font-weight: bold;
 }
 .font--size--3 {
-  font-size: 12px;
+  font-size: calc(12rem / 16);
   line-height: 1.3333333333;
 }
 .font--size--2 {
-  font-size: 13px;
+  font-size: calc(13rem / 16);
   line-height: 1.2307692308;
 }
 @media (min-width: 25em) {
   .font--size--2 {
-    font-size: 14px;
+    font-size: calc(14rem / 16);
     line-height: 1.1428571429;
   }
 }
 @media (min-width: 37.5em) {
   .font--size--2 {
-    font-size: 13px;
+    font-size: calc(13rem / 16);
     line-height: 1.2307692308;
   }
 }
 .font--size--1 {
-  font-size: 15px;
+  font-size: calc(15rem / 16);
   line-height: 1.2;
 }
 @media (min-width: 25em) {
   .font--size--1 {
-    font-size: 15px;
+    font-size: calc(15rem / 16);
     line-height: 1.2;
   }
 }
 @media (min-width: 37.5em) {
   .font--size--1 {
-    font-size: 14px;
+    font-size: calc(14rem / 16);
     line-height: 1.2857142857;
   }
 }
 .font--size-0 {
-  font-size: 15px;
+  font-size: calc(15rem / 16);
   line-height: 1.3333333333;
 }
 @media (min-width: 25em) {
   .font--size-0 {
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.25;
   }
 }
 .font--size-1 {
-  font-size: 14px;
+  font-size: calc(14rem / 16);
   line-height: 1.2857142857;
 }
 @media (min-width: 25em) {
   .font--size-1 {
-    font-size: 14px;
+    font-size: calc(14rem / 16);
     line-height: 1.2857142857;
   }
 }
 @media (min-width: 56.25em) {
   .font--size-1 {
-    font-size: 18px;
+    font-size: calc(18rem / 16);
     line-height: 1.2222222222;
   }
 }
 .font--size-2 {
-  font-size: 18px;
+  font-size: calc(18rem / 16);
   line-height: 1.2222222222;
 }
 @media (min-width: 25em) {
   .font--size-2 {
-    font-size: 18px;
+    font-size: calc(18rem / 16);
     line-height: 1.2222222222;
   }
 }
 @media (min-width: 37.5em) {
   .font--size-2 {
-    font-size: 20px;
+    font-size: calc(20rem / 16);
     line-height: 1.2;
   }
 }
 .font--size-3 {
-  font-size: 20px;
+  font-size: calc(20rem / 16);
   line-height: 1.2;
 }
 @media (min-width: 37.5em) {
   .font--size-3 {
-    font-size: 24px;
+    font-size: calc(24rem / 16);
     line-height: 1.1666666667;
   }
 }
 .font--size-4 {
-  font-size: 24px;
+  font-size: calc(24rem / 16);
   line-height: 1;
 }
 @media (min-width: 25em) {
   .font--size-4 {
-    font-size: 24px;
+    font-size: calc(24rem / 16);
     line-height: 1.1666666667;
   }
 }
 @media (min-width: 37.5em) {
   .font--size-4 {
-    font-size: 32px;
+    font-size: calc(32rem / 16);
     line-height: 1.125;
   }
 }
 .font--size-5 {
-  font-size: 28px;
+  font-size: calc(28rem / 16);
   line-height: 1.1428571429;
 }
 @media (min-width: 25em) {
   .font--size-5 {
-    font-size: 32px;
+    font-size: calc(32rem / 16);
     line-height: 1.125;
   }
 }
 @media (min-width: 37.5em) {
   .font--size-5 {
-    font-size: 44px;
+    font-size: calc(44rem / 16);
     line-height: 1.0909090909;
   }
 }

@@ -116,7 +116,7 @@ const menuOpen = ref(false);
 @media (min-width: $--breakpoint-md) {
   .main-nav__wrapper {
     display: flex;
-    padding: 0 16px;
+    padding: 0 calc(var(--size-base-unit) * 4);
     margin: 0 auto;
     width: 100%;
     max-width: var(--size-main-wrapper);

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <SkipToContent />
     <Suspense>
       <RouterView v-slot="{ Component }">
@@ -12,7 +12,7 @@
       </RouterView>
     </Suspense>
     <div class="hidden" v-html="iconSprite" />
-  </div>
+  </main>
 </template>
 
 <script setup>
