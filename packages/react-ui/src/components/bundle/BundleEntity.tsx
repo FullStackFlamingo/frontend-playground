@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import slugify from 'slugify';
 import styled from 'styled-components';
 import { ResponsiveImage } from '../components-global/ResponsiveImage';
@@ -27,21 +26,23 @@ interface BundleEntityProps {
   onFocus: React.FocusEventHandler<HTMLAnchorElement>;
 }
 export function BundleEntity({ entity, type, onFocus }: BundleEntityProps) {
-  const href = useMemo(() => {
-    const slug = slugify(entity.episode.title.default);
-    return `/iplayer/episode/${entity.episode.previewId}/${slug}`;
-  }, [entity]);
-  const synopsis = useMemo(() => entity.episode.synopsis.small || entity.episode.synopsis.editorial, [entity]);
-  const ariaLabel = useMemo(() => entity.episode.title.default + 'Description: ' + synopsis, [entity]);
+  const slug = slugify(entity.episode.title.default);
+  const id = entity.episode.previewId || entity.episode.id;
+  const href = `/iplayer/episode/${id}/${slug}`;
 
-  const imageRecipe = useMemo(() => {
-    switch (type) {
-      case 'portrait':
-        return entity.episode.image.portrait ?? entity.episode.image.default;
-      default:
-        return entity.episode.image.promotional ?? entity.episode.image.default;
-    }
-  }, [entity]);
+  const synopsis = entity.episode.synopsis.small || entity.episode.synopsis.editorial;
+  const ariaLabel = `${entity.episode.title.default} Description: ${synopsis}`;
+
+  const { image } = entity.episode;
+
+  let imageRecipe;
+
+  switch (type) {
+    case 'portrait':
+      imageRecipe = image.portrait || image.default;
+    default:
+      imageRecipe = image.promotional || image.default;
+  }
 
   return (
     <BundleEntityRoot href={href} aria-label={ariaLabel} onFocus={onFocus}>

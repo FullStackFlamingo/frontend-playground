@@ -1,5 +1,5 @@
 import { breakpoint } from '@private/design-system/vars';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useQuery } from 'urql';
 import { SvgUse } from '../components-global/SvgUse';
@@ -124,7 +124,7 @@ export function MainNavigation() {
   const [result] = useQuery({ query });
   const { data, fetching, error } = result;
 
-  const items: [IPlayer.MainNav.TopNavItem] = useMemo(() => data.getNavigationItems?.items, [data]);
+  const items: [IPlayer.MainNav.TopNavItem] = data.getNavigationItems?.items;
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [activeSubNav, setActiveSubNav] = useState<string | null>(null);

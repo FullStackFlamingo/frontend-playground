@@ -1,5 +1,4 @@
 import { breakpoint } from '@private/design-system/vars';
-import { useMemo } from 'react';
 import styled from 'styled-components';
 import { SvgUse } from '../components-global/SvgUse';
 import slugify from 'slugify';
@@ -64,14 +63,13 @@ interface BundleHeroHeaderProps {
   bundle: IPlayer.Bundle;
 }
 export function BundleHeroHeader({ bundle, className }: BundleHeroHeaderProps) {
-  const episode = useMemo(() => bundle.entities[0].episode, [bundle]);
-  const href = useMemo(() => {
-    const slug = slugify(episode.title.default);
-    return `/iplayer/episode/${episode.previewId}/${slug}`;
-  }, [episode]);
-  const subtitle = useMemo(() => episode.subtitle.editorial, [bundle]);
-  const synopsis = useMemo(() => episode.synopsis.editorial, [bundle]);
-  const ariaLabel = useMemo(() => episode.title.default + 'Description: ' + synopsis, [bundle]);
+  const { episode } = bundle.entities[0];
+  const slug = slugify(episode.title.default);
+  const href = `/iplayer/episode/${episode.previewId}/${slug}`;
+
+  const subtitle = episode.subtitle.editorial;
+  const synopsis = episode.synopsis.editorial;
+  const ariaLabel = `${episode.title.default} Description: ${synopsis}`;
 
   return (
     <BundleHeroHeaderRoot className={`wrapper ${className}`}>

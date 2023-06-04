@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useQuery } from 'urql';
 import { breakpoint } from '@private/design-system/vars';
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SearchSection } from '../components/SearchSection';
 import { BundleHero } from '../components/bundle/BundleHero';
@@ -65,14 +64,8 @@ function Home() {
 
   i18n.addResourceBundle('en', 'translation', { home: data.getTranslations }, true, true); // awkward i18n merge on render?
 
-  const bundleHero = useMemo(
-    () => data.getBundlesForPath?.find((item: IPlayer.Bundle) => item.type === 'hero'),
-    [data]
-  );
-  const bundleRows = useMemo(
-    () => data.getBundlesForPath?.filter((item: IPlayer.Bundle) => item.type !== 'hero'),
-    [data]
-  );
+  const bundleHero = data.getBundlesForPath?.find((item: IPlayer.Bundle) => item.type === 'hero');
+  const bundleRows = data.getBundlesForPath?.filter((item: IPlayer.Bundle) => item.type !== 'hero');
 
   return (
     <HomeRoot>

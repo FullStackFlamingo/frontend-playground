@@ -1,5 +1,4 @@
 import { breakpoint } from '@private/design-system/vars';
-import { useMemo } from 'react';
 import styled from 'styled-components';
 import { ResponsiveImage } from '../components-global/ResponsiveImage';
 import { BundleHeroHeader } from './BundleHeroHeader';
@@ -91,7 +90,7 @@ interface BundleHeroProps {
 }
 
 export function BundleHero({ bundle }: BundleHeroProps) {
-  const episode = useMemo(() => bundle.entities[0].episode, [bundle]);
+  const { episode } = bundle.entities[0];
 
   return (
     <BundleHeroOverflow>
